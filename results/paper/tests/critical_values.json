@@ -1,0 +1,6 @@
+{
+ "R_sup_lm_5pct": 5.679442598155846,
+ "null_reps": 5000,
+ "nw_lags": 5,
+ "ar_order": 5
+}

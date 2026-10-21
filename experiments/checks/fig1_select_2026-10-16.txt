@@ -1,0 +1,8 @@
+volatility_type values: {'egarch': 250, 'garch': 250}
+base_components examples: {'["arma"]': 1750, '["ar"]': 1750, '["random_walk"]': 250, '["ari"]': 250, '["ar", "egarch"]': 125, '["arma", "egarch"]': 125}
+candidates: volatility GARCH-AR 125  stationary AR 250
+chosen volatility series 4056: feature 2.322 (q90 2.320), max|z| 4.01, base ["ar", "garch"]
+chosen stationary series 734: feature 1.096 (median 1.101), max|z| 2.81, base ["ar"]
+percentile of the stationary series' feature among volatility series: 0.02 ; of the volatility series among stationary series: 1.0
+volatility series, window H0 W1: [17.02, 34.42, 37.5, 23.4, 17.24, 11.49, 11.93, 12.79, 14.66] calm window 6 turbulent window 3
+stationary series, window H0 W1: [23.99, 25.93, 27.03, 29.68, 27.93, 24.66, 23.68, 24.29, 23.98]

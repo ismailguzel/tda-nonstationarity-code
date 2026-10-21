@@ -1,0 +1,30 @@
+# munchlab1 job fec09356, env tdans, repo f9b8417, data/paper (read-only)
+all72a: 270 series extracted; NaN 0.00151, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (4s)
+all72b: 330 series extracted; NaN 0.00161, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (8s)
+all72c: 330 series extracted; NaN 0.00155, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (13s)
+all72d: 390 series extracted; NaN 0.00160, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (18s)
+all72e: 390 series extracted; NaN 0.00166, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (24s)
+all72f: 450 series extracted; NaN 0.00160, +inf 0.00000, -inf 0.00000 of cells; series with >=1 non-finite: 1.000; max |fresh - stored| on finite cells 0.00e+00 (30s)
+
+Overall: 2160 series, non-finite cell fraction 0.00159; columns with any non-finite: 2 of 774
+
+Columns with non-finite values (rate over the sample; class-range; spread of the per-part NaN fill in column SDs):
+data__query_similarity_count__query_None__threshold_0.0          1.0000    1.0000                   0.0000                        0.0000       1.0000       1.0000        1.000        1.000       1.0000       1.0000
+data__variation_coefficient                                      0.2333    0.2333                   0.4667                        0.1129       0.1667       0.2424        0.197        0.241       0.2846       0.2422
+
+Non-finite cell fraction by level: {0: 0.00151, 1: 0.00151, 2: 0.00158, 3: 0.00163, 4: 0.0016, 5: 0.00164}
+LR fold 0 TDA-90: 4s
+LR fold 0 TSFresh-774: 46s
+LR fold 0 catch22: 1s
+LR fold 0 TSFresh-774+TDA-90: 49s
+LR fold 0 TSFresh-774+catch22: 47s
+
+LR n_iter_ (max_iter 3000), fold 0:
+char                   S    V    T    R    M    Q    P    C
+set                                                        
+TDA-90               141  283  247  231  187  112  210  226
+TSFresh-774          279  737  516  496  414  202  471  614
+TSFresh-774+TDA-90   271  680  516  529  339   64  502  722
+TSFresh-774+catch22  248  724  511  506  390  218  466  621
+catch22               51   21   35   29   37   28   32   32
+ConvergenceWarning: {'TDA-90': 0, 'TSFresh-774': 0, 'TSFresh-774+TDA-90': 0, 'TSFresh-774+catch22': 0, 'catch22': 0}

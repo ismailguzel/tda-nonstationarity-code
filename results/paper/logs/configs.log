@@ -1,0 +1,7 @@
+  all72a:  9 classes, levels [0, 1], 4500 series
+  all72b: 11 classes, levels [2], 5500 series
+  all72c: 11 classes, levels [2], 5500 series
+  all72d: 13 classes, levels [3], 6500 series
+  all72e: 13 classes, levels [3], 6500 series
+  all72f: 15 classes, levels [4, 5], 7500 series
+betise 0.6.0: 72 classes, per level {0: 1, 1: 8, 2: 22, 3: 26, 4: 13, 5: 2}, 204 scenarios, 36000 series

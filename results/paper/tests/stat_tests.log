@@ -1,0 +1,13 @@
+36000 series, 72 classes; loaded in 2s
+sup-LM slope-break null: 5% critical value 5.679 (6s)
+tests done in 116s
+level      1      2      3      4      5
+char                                    
+M      0.739  0.594  0.501  0.501    NaN
+P      0.589  0.623  0.574  0.524  0.502
+Q      0.971  0.881  0.728  0.694    NaN
+R      0.797  0.639  0.532  0.501    NaN
+S      0.747  0.604  0.499  0.500    NaN
+T      0.792  0.642  0.529  0.495    NaN
+V      0.776  0.694  0.636  0.552    NaN
+total 116s

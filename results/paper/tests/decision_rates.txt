@@ -1,0 +1,13 @@
+Exploratory (outside the analysis plan). Classical tests as detectors, 5% level, all 36,000
+series (experiments/exploratory/stat_tests.py, run on munchlab1 2026-10-16, 116 s).
+TPR = share flagged among series with the cause; FPR = share flagged among series without it.
+
+S L1 TPR 0.934 FPR 0.440 | L4 TPR 0.952 FPR 0.951
+V L1 TPR 0.936 FPR 0.385 | L4 TPR 0.601 FPR 0.496
+T L1 TPR 1.000 FPR 0.416 | L4 TPR 0.902 FPR 0.912
+R L1 TPR 1.000 FPR 0.407 | L4 TPR 0.980 FPR 0.978
+M L1 TPR 1.000 FPR 0.523 | L4 TPR 0.996 FPR 0.994
+Q L1 TPR 0.994 FPR 0.052 | L4 TPR 0.405 FPR 0.017
+P L1 TPR 0.560 FPR 0.383 | L4 TPR 0.995 FPR 0.947
+stationary class (level 0): flagged by any of the seven tests 0.264; per test
+S 0.006, V 0.054, T 0.082, R 0.084, M 0.094, Q 0.046, P 0.034

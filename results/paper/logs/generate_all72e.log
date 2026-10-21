@@ -1,0 +1,14 @@
+  stochastic_trend+variance_shift+point_anomaly: 500 series
+  stochastic_trend+variance_shift+collective_anomaly: 500 series
+  volatility+trend+mean_shift: 500 series
+  volatility+trend+point_anomaly: 500 series
+  volatility+trend+collective_anomaly: 500 series
+  volatility+trend_shift+point_anomaly: 500 series
+  volatility+trend_shift+collective_anomaly: 500 series
+  volatility+mean_shift+point_anomaly: 500 series
+  volatility+mean_shift+collective_anomaly: 500 series
+  trend+mean_shift+point_anomaly: 500 series
+  trend+mean_shift+collective_anomaly: 500 series
+  trend+variance_shift+point_anomaly: 500 series
+  trend+variance_shift+collective_anomaly: 500 series
+all72e: 6500 series, 13 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72e.parquet

@@ -1,0 +1,10 @@
+tag            paper
+per class      500
+models         lr hgb
+commit         f9b841732cd68cba7e7608015ba86e21bac53286
+dirty files    0
+betise         0.6.0
+python         3.11.16 (/home/iguzel/miniforge3/envs/tdans/bin/python)
+host           munchlab1, 12 cores
+start          2026-10-14 13:59:35
+end            2026-10-15 00:04:17

@@ -1,0 +1,91 @@
+feature,mean coef,sd,same sign in folds,block
+pwin_H0__landscape_L1__std,8.623379344128109,0.05408467063692242,5,"paper H0, std over windows"
+pwin_H0__bottleneck__std,-8.024868551031767,0.11361388010822243,5,"paper H0, std over windows"
+pwin_H0__bottleneck__mean,7.963636137496076,0.07783566729890079,5,"paper H0, mean over windows"
+pwin_H0__landscape_L1__mean,-6.778179996396038,0.08523087828605404,5,"paper H0, mean over windows"
+pwin_H0__W1__mean,-3.8347138109845367,0.08381905194894346,5,"paper H0, mean over windows"
+topo__sub_H0__pers_std,-2.894361523501739,0.10561937575930655,5,whole-series sublevel H0
+pwin_H1__carl_f1__mean,-2.876315909263662,0.3066851292351223,5,"paper H1, mean over windows"
+pwin_H0__carl_f4__std,-2.6816432042166993,0.0876253120541972,5,"paper H0, std over windows"
+pwin_H1__carl_f2__mean,2.512918758446006,0.13868778763364326,5,"paper H1, mean over windows"
+pwin_H0__entropy__std,-2.4964496627282364,0.032642213092260904,5,"paper H0, std over windows"
+win_sub_H0__pers_second__mean,2.3780212703056876,0.2531642176585252,5,windowed sublevel H0
+pwin_H0__carl_f4__mean,2.358929789984039,0.0902909636471915,5,"paper H0, mean over windows"
+pwin_H0__entropy__mean,-2.0687391283460257,0.040495248384562595,5,"paper H0, mean over windows"
+pwin_H0__carl_f2__std,1.9915229869840683,0.04212949764875017,5,"paper H0, std over windows"
+topo__sub_H0__pers_q90,-1.9562200268182828,0.1560966886482555,5,whole-series sublevel H0
+win_sub_H0__pers_q90__mean,1.9266265704028225,0.08028414387340353,5,windowed sublevel H0
+win_sub_H0__total_pers__mean,-1.7705299217946693,0.2439123810472276,5,windowed sublevel H0
+topo__sub_H0__total_pers,1.747577407658508,0.19092867122937326,5,whole-series sublevel H0
+win_sub_H0__pers_mean__mean,-1.7159863381970042,0.3017458779447614,5,windowed sublevel H0
+pwin_H1__carl_f1__std,1.5311820677698118,0.10762994107214449,5,"paper H1, std over windows"
+topo__sub_H0__pers_mean,1.469265974056623,0.29208237556514866,5,whole-series sublevel H0
+pwin_H1__carl_f2__std,-1.1408289706152368,0.0818922026514636,5,"paper H1, std over windows"
+win_sub_H0__total_pers__std,-1.1242662045953051,0.06297102357189575,5,windowed sublevel H0
+win_sub_H0__pers_mean__range,1.1110791623826173,0.07013219919508716,5,windowed sublevel H0
+topo__sub_H0__pers_skew,1.0680046276146846,0.05770641291364234,5,whole-series sublevel H0
+win_sub_H0__pers_q90__std,-0.9474329223209974,0.12496142039977827,5,windowed sublevel H0
+topo__sub_H0__n_bars,-0.9358132463905889,0.12181593438680531,5,whole-series sublevel H0
+win_sub_H0__total_pers__range,0.9215152115571146,0.10691873757428615,5,windowed sublevel H0
+topo__sub_H0__carl_f2,0.8560617144304878,0.07385525643685614,5,whole-series sublevel H0
+win_sub_H0__pers_std__std,0.8429150626877933,0.05589861261939035,5,windowed sublevel H0
+win_sub_H0__pers_q90__range,0.8415847845549136,0.09941361074684239,5,windowed sublevel H0
+pwin_H1__W1__mean,-0.8033011168636668,0.15961827933353406,5,"paper H1, mean over windows"
+pwin_H1__W1__std,-0.7921014257637434,0.039437638990694135,5,"paper H1, std over windows"
+win_sub_H0__pers_mean__std,-0.7641502712546466,0.06654397797951918,5,windowed sublevel H0
+topo__sub_H0__carl_f5_max,-0.7468280315973422,0.1031960091995161,5,whole-series sublevel H0
+pwin_H1__landscape_L1__std,0.709576294784652,0.07016075146327147,5,"paper H1, std over windows"
+win_sub_H0__carl_f1__maxjump,-0.6616454115143453,0.013744191804449414,5,windowed sublevel H0
+pwin_H0__carl_f2__mean,-0.6533902433760601,0.06784134207701764,5,"paper H0, mean over windows"
+win_sub_H0__carl_f1__std,0.6216616680542527,0.07107145345596247,5,windowed sublevel H0
+win_sub_H0__pers_std__mean,-0.6105213468726393,0.15188948242924735,5,windowed sublevel H0
+topo__sub_H0__landscape_l2,0.6070332012087741,0.0904576544078449,5,whole-series sublevel H0
+pwin_H1__bottleneck__std,-0.5035578036224418,0.059496827434598235,5,"paper H1, std over windows"
+win_sub_H0__pers_mean__maxjump,0.4858345488543576,0.053131699792591774,5,windowed sublevel H0
+win_sub_H0__n_bars__mean,0.42320904567304946,0.10139522243253354,5,windowed sublevel H0
+win_sub_H0__total_pers__maxjump,0.4092157195427496,0.06604841432758955,5,windowed sublevel H0
+win_sub_H0__pers_ratio_21__range,-0.3963507090478885,0.046970884849738485,5,windowed sublevel H0
+topo__sub_H0__carl_f1,-0.3686173535550151,0.014903057489352188,5,whole-series sublevel H0
+win_sub_H0__pers_second__std,-0.34748027359426487,0.10661151390902546,5,windowed sublevel H0
+win_sub_H0__pers_ratio_21__mean,-0.33443586393510094,0.04255810211857839,5,windowed sublevel H0
+win_sub_H0__pers_std__maxjump,-0.32011908495413943,0.017437085474724074,5,windowed sublevel H0
+topo__sub_H0__landscape_l1,0.3157338975603311,0.040259727128188774,5,whole-series sublevel H0
+topo__sub_H0__pers_second,0.2896914041626165,0.053787168850555414,5,whole-series sublevel H0
+pwin_H1__bottleneck__mean,0.28518153828166704,0.08265601744084067,5,"paper H1, mean over windows"
+win_sub_H0__pers_q90__maxjump,0.27950038991723886,0.05092316366107856,5,windowed sublevel H0
+topo__sub_H0__carl_f4,-0.2660868315671283,0.059282534941548067,5,whole-series sublevel H0
+topo__sub_H0__entropy,0.2624411726064997,0.051464920212124315,5,whole-series sublevel H0
+win_sub_H0__pers_second__range,0.2580959421514558,0.08414046217410472,5,windowed sublevel H0
+win_sub_H0__pers_second__maxjump,0.24326633783021023,0.041592034847511866,5,windowed sublevel H0
+win_sub_H0__carl_f1__mean,0.186205795935142,0.043508659050835764,5,windowed sublevel H0
+topo__sub_H0__betti_3,-0.18598385647522514,0.011419910713636064,5,whole-series sublevel H0
+win_sub_H0__pers_ratio_21__std,0.18483280886342043,0.051557993837470825,5,windowed sublevel H0
+pwin_H0__W1__std,0.17333308223177832,0.040875230581919164,5,"paper H0, std over windows"
+win_sub_H0__n_bars__range,-0.1674237454900223,0.03849101731616019,5,windowed sublevel H0
+topo__sub_H0__betti_5,-0.15746526345884465,0.013241502811690514,5,whole-series sublevel H0
+pwin_H1__carl_f3__std,-0.15285232990519337,0.08165448289298753,5,"paper H1, std over windows"
+win_sub_H0__n_bars__std,0.1525994308072585,0.03286648040205802,5,windowed sublevel H0
+win_sub_H0__pers_skew__range,0.14076728975005454,0.05539555665194184,5,windowed sublevel H0
+win_sub_H0__pers_std__range,-0.13300408297507824,0.04638673560742996,5,windowed sublevel H0
+win_sub_H0__pers_skew__maxjump,-0.13122448723056407,0.03392366169003165,5,windowed sublevel H0
+pwin_H1__entropy__mean,-0.12884082983792666,0.04769894485973454,5,"paper H1, mean over windows"
+win_sub_H0__pers_skew__mean,-0.12540497295844866,0.04129278283879486,5,windowed sublevel H0
+topo__sub_H0__betti_4,-0.10892297991089336,0.020688887941369118,5,whole-series sublevel H0
+pwin_H1__carl_f3__mean,-0.10844212207223694,0.08940853809639455,4,"paper H1, mean over windows"
+topo__sub_H0__betti_8,0.10381303004142624,0.013001689523858743,5,whole-series sublevel H0
+topo__sub_H0__carl_f3,-0.10250353844413433,0.03586250804380726,5,whole-series sublevel H0
+pwin_H1__carl_f4__std,0.09711007998372675,0.11293854747893874,4,"paper H1, std over windows"
+pwin_H1__carl_f4__mean,-0.09075076825926164,0.10738593430436295,4,"paper H1, mean over windows"
+topo__sub_H0__betti_6,-0.0880131952149811,0.027795445090879268,5,whole-series sublevel H0
+win_sub_H0__carl_f1__range,0.07909925293471519,0.07322063377073211,4,windowed sublevel H0
+win_sub_H0__pers_skew__std,0.0573435001470623,0.05443386617693311,5,windowed sublevel H0
+topo__sub_H0__betti_1,-0.043665838928476176,0.008082010001708266,5,whole-series sublevel H0
+topo__sub_H0__betti_2,-0.03760568355424448,0.016264994989460487,5,whole-series sublevel H0
+topo__sub_H0__pers_ratio_21,0.028088111381398256,0.02269765198321704,4,whole-series sublevel H0
+win_sub_H0__n_bars__maxjump,0.02445909819111234,0.007868642329491192,5,windowed sublevel H0
+topo__sub_H0__betti_7,-0.021843254387452264,0.016316220768448984,5,whole-series sublevel H0
+win_sub_H0__pers_ratio_21__maxjump,-0.02150571811781232,0.022510549839228778,4,windowed sublevel H0
+pwin_H1__entropy__std,-0.01216566573598538,0.013665414141394763,3,"paper H1, std over windows"
+pwin_H1__landscape_L1__mean,0.007558002280285902,0.11641274989409967,2,"paper H1, mean over windows"
+topo__sub_H0__betti_0,3.750128533494203e-14,3.6704547677995075e-15,5,whole-series sublevel H0
+topo__sub_H0__betti_9,0.0,0.0,5,whole-series sublevel H0

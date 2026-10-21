@@ -1,0 +1,2 @@
+rejection rate at 5%: outliers::grubbs.test 0.1679; Bonferroni t (Python) 0.0511
+critical G: empirical 95% quantile 3.8674; Bonferroni t formula 3.8605; MC s.e. of a rate ~ 0.0015

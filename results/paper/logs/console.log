@@ -1,0 +1,692 @@
+environment ok: /home/iguzel/miniforge3/envs/tdans/bin/python, betise 0.6.0
+tag            paper
+per class      500
+models         lr hgb
+commit         f9b841732cd68cba7e7608015ba86e21bac53286
+dirty files    0
+betise         0.6.0
+python         3.11.16 (/home/iguzel/miniforge3/envs/tdans/bin/python)
+host           munchlab1, 12 cores
+start          2026-10-14 13:59:35
+[2026-10-14 13:59:35] >>> configs
+  all72a:  9 classes, levels [0, 1], 4500 series
+  all72b: 11 classes, levels [2], 5500 series
+  all72c: 11 classes, levels [2], 5500 series
+  all72d: 13 classes, levels [3], 6500 series
+  all72e: 13 classes, levels [3], 6500 series
+  all72f: 15 classes, levels [4, 5], 7500 series
+betise 0.6.0: 72 classes, per level {0: 1, 1: 8, 2: 22, 3: 26, 4: 13, 5: 2}, 204 scenarios, 36000 series
+[2026-10-14 13:59:37] <<< configs
+[2026-10-14 13:59:37] >>> validate
+betise 0.6.0: ALL_FEATURES_OFF matches FEATURE_ORDER
+  ok   all72a-config.json: 9 classes, 60 series checked
+  ok   all72b-config.json: 11 classes, 96 series checked
+  ok   all72c-config.json: 11 classes, 72 series checked
+  ok   all72d-config.json: 13 classes, 108 series checked
+  ok   all72e-config.json: 13 classes, 120 series checked
+  ok   all72f-config.json: 15 classes, 156 series checked
+all valid
+[2026-10-14 13:59:59] <<< validate
+[2026-10-14 13:59:59] >>> generate_all72a
+  stationary: 500 series
+  stochastic_trend: 500 series
+  volatility: 500 series
+  trend: 500 series
+  trend_shift: 500 series
+  mean_shift: 500 series
+  variance_shift: 500 series
+  point_anomaly: 500 series
+  collective_anomaly: 500 series
+all72a: 4500 series, 9 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72a.parquet
+[2026-10-14 14:01:52] <<< generate_all72a
+[2026-10-14 14:01:52] >>> generate_all72b
+  stochastic_trend+volatility: 500 series
+  stochastic_trend+trend: 500 series
+  stochastic_trend+trend_shift: 500 series
+  stochastic_trend+mean_shift: 500 series
+  stochastic_trend+variance_shift: 500 series
+  stochastic_trend+point_anomaly: 500 series
+  stochastic_trend+collective_anomaly: 500 series
+  volatility+trend: 500 series
+  volatility+trend_shift: 500 series
+  volatility+mean_shift: 500 series
+  volatility+point_anomaly: 500 series
+all72b: 5500 series, 11 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72b.parquet
+[2026-10-14 14:04:18] <<< generate_all72b
+[2026-10-14 14:04:18] >>> generate_all72c
+  volatility+collective_anomaly: 500 series
+  trend+mean_shift: 500 series
+  trend+variance_shift: 500 series
+  trend+point_anomaly: 500 series
+  trend+collective_anomaly: 500 series
+  trend_shift+point_anomaly: 500 series
+  trend_shift+collective_anomaly: 500 series
+  mean_shift+point_anomaly: 500 series
+  mean_shift+collective_anomaly: 500 series
+  variance_shift+point_anomaly: 500 series
+  variance_shift+collective_anomaly: 500 series
+all72c: 5500 series, 11 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72c.parquet
+[2026-10-14 14:06:45] <<< generate_all72c
+[2026-10-14 14:06:45] >>> generate_all72d
+  stochastic_trend+volatility+trend: 500 series
+  stochastic_trend+volatility+trend_shift: 500 series
+  stochastic_trend+volatility+mean_shift: 500 series
+  stochastic_trend+volatility+point_anomaly: 500 series
+  stochastic_trend+volatility+collective_anomaly: 500 series
+  stochastic_trend+trend+mean_shift: 500 series
+  stochastic_trend+trend+variance_shift: 500 series
+  stochastic_trend+trend+point_anomaly: 500 series
+  stochastic_trend+trend+collective_anomaly: 500 series
+  stochastic_trend+trend_shift+point_anomaly: 500 series
+  stochastic_trend+trend_shift+collective_anomaly: 500 series
+  stochastic_trend+mean_shift+point_anomaly: 500 series
+  stochastic_trend+mean_shift+collective_anomaly: 500 series
+all72d: 6500 series, 13 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72d.parquet
+[2026-10-14 14:09:44] <<< generate_all72d
+[2026-10-14 14:09:44] >>> generate_all72e
+  stochastic_trend+variance_shift+point_anomaly: 500 series
+  stochastic_trend+variance_shift+collective_anomaly: 500 series
+  volatility+trend+mean_shift: 500 series
+  volatility+trend+point_anomaly: 500 series
+  volatility+trend+collective_anomaly: 500 series
+  volatility+trend_shift+point_anomaly: 500 series
+  volatility+trend_shift+collective_anomaly: 500 series
+  volatility+mean_shift+point_anomaly: 500 series
+  volatility+mean_shift+collective_anomaly: 500 series
+  trend+mean_shift+point_anomaly: 500 series
+  trend+mean_shift+collective_anomaly: 500 series
+  trend+variance_shift+point_anomaly: 500 series
+  trend+variance_shift+collective_anomaly: 500 series
+all72e: 6500 series, 13 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72e.parquet
+[2026-10-14 14:12:56] <<< generate_all72e
+[2026-10-14 14:12:56] >>> generate_all72f
+  stochastic_trend+volatility+trend+mean_shift: 500 series
+  stochastic_trend+volatility+trend+point_anomaly: 500 series
+  stochastic_trend+volatility+trend+collective_anomaly: 500 series
+  stochastic_trend+volatility+trend_shift+point_anomaly: 500 series
+  stochastic_trend+volatility+trend_shift+collective_anomaly: 500 series
+  stochastic_trend+volatility+mean_shift+point_anomaly: 500 series
+  stochastic_trend+volatility+mean_shift+collective_anomaly: 500 series
+  stochastic_trend+trend+mean_shift+point_anomaly: 500 series
+  stochastic_trend+trend+mean_shift+collective_anomaly: 500 series
+  stochastic_trend+trend+variance_shift+point_anomaly: 500 series
+  stochastic_trend+trend+variance_shift+collective_anomaly: 500 series
+  volatility+trend+mean_shift+point_anomaly: 500 series
+  volatility+trend+mean_shift+collective_anomaly: 500 series
+  stochastic_trend+volatility+trend+mean_shift+point_anomaly: 500 series
+  stochastic_trend+volatility+trend+mean_shift+collective_anomaly: 500 series
+all72f: 7500 series, 15 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72f.parquet
+[2026-10-14 14:16:41] <<< generate_all72f
+[2026-10-14 14:16:41] >>> features_all72a
+all72a: 4500 series of length 500
+  tda90      90 features (29s)
+  catch22    22 features (2s)
+  tsfresh   774 features (153s)
+[2026-10-14 14:19:46] <<< features_all72a
+[2026-10-14 14:19:46] >>> features_all72b
+all72b: 5500 series of length 500
+  tda90      90 features (36s)
+  catch22    22 features (2s)
+  tsfresh   774 features (187s)
+[2026-10-14 14:23:33] <<< features_all72b
+[2026-10-14 14:23:33] >>> features_all72c
+all72c: 5500 series of length 500
+  tda90      90 features (37s)
+  catch22    22 features (2s)
+  tsfresh   774 features (188s)
+[2026-10-14 14:27:22] <<< features_all72c
+[2026-10-14 14:27:22] >>> features_all72d
+all72d: 6500 series of length 500
+  tda90      90 features (43s)
+  catch22    22 features (3s)
+  tsfresh   774 features (219s)
+[2026-10-14 14:31:47] <<< features_all72d
+[2026-10-14 14:31:47] >>> features_all72e
+all72e: 6500 series of length 500
+  tda90      90 features (44s)
+  catch22    22 features (3s)
+  tsfresh   774 features (221s)
+[2026-10-14 14:36:16] <<< features_all72e
+[2026-10-14 14:36:16] >>> features_all72f
+all72f: 7500 series of length 500
+  tda90      90 features (50s)
+  catch22    22 features (3s)
+  tsfresh   774 features (257s)
+[2026-10-14 14:41:27] <<< features_all72f
+[2026-10-14 14:41:27] >>> detectors_main
+36000 series, 72 classes, parts ['all72a', 'all72b', 'all72c', 'all72d', 'all72e', 'all72f']; TDA-90 90, TSFresh-774 774, catch22 22
+  fold 1/5 TDA-90 lr (4s)
+  fold 1/5 TSFresh-774 lr (47s)
+  fold 1/5 catch22 lr (0s)
+  fold 1/5 TDA-90 hgb (62s)
+  fold 1/5 TSFresh-774 hgb (561s)
+  fold 1/5 catch22 hgb (15s)
+  fold 1/5 MiniRocket ridge (4462s)
+  fold 1/5 done (5152s)
+  fold 2/5 TDA-90 lr (4s)
+  fold 2/5 TSFresh-774 lr (47s)
+  fold 2/5 catch22 lr (0s)
+  fold 2/5 TDA-90 hgb (63s)
+  fold 2/5 TSFresh-774 hgb (559s)
+  fold 2/5 catch22 hgb (15s)
+  fold 2/5 MiniRocket ridge (4460s)
+  fold 2/5 done (10301s)
+  fold 3/5 TDA-90 lr (4s)
+  fold 3/5 TSFresh-774 lr (46s)
+  fold 3/5 catch22 lr (0s)
+  fold 3/5 TDA-90 hgb (62s)
+  fold 3/5 TSFresh-774 hgb (564s)
+  fold 3/5 catch22 hgb (15s)
+  fold 3/5 MiniRocket ridge (4468s)
+  fold 3/5 done (15461s)
+  fold 4/5 TDA-90 lr (4s)
+  fold 4/5 TSFresh-774 lr (46s)
+  fold 4/5 catch22 lr (0s)
+  fold 4/5 TDA-90 hgb (62s)
+  fold 4/5 TSFresh-774 hgb (560s)
+  fold 4/5 catch22 hgb (15s)
+  fold 4/5 MiniRocket ridge (4460s)
+  fold 4/5 done (20608s)
+  fold 5/5 TDA-90 lr (4s)
+  fold 5/5 TSFresh-774 lr (47s)
+  fold 5/5 catch22 lr (0s)
+  fold 5/5 TDA-90 hgb (63s)
+  fold 5/5 TSFresh-774 hgb (561s)
+  fold 5/5 catch22 hgb (15s)
+  fold 5/5 MiniRocket ridge (4460s)
+  fold 5/5 done (25760s)
+Saved -> /home/iguzel/work/tda-nonstationarity/runs/paper/main (25760s)
+[2026-10-14 21:50:51] <<< detectors_main
+[2026-10-14 21:50:51] >>> detectors_complementarity
+36000 series, 72 classes, parts ['all72a', 'all72b', 'all72c', 'all72d', 'all72e', 'all72f']; TSFresh-774+TDA-90 864, TSFresh-774+catch22 796
+  fold 1/5 TSFresh-774+TDA-90 lr (51s)
+  fold 1/5 TSFresh-774+catch22 lr (47s)
+  fold 1/5 TSFresh-774+TDA-90 hgb (611s)
+  fold 1/5 TSFresh-774+catch22 hgb (565s)
+  fold 1/5 done (1273s)
+  fold 2/5 TSFresh-774+TDA-90 lr (51s)
+  fold 2/5 TSFresh-774+catch22 lr (47s)
+  fold 2/5 TSFresh-774+TDA-90 hgb (617s)
+  fold 2/5 TSFresh-774+catch22 hgb (566s)
+  fold 2/5 done (2554s)
+  fold 3/5 TSFresh-774+TDA-90 lr (50s)
+  fold 3/5 TSFresh-774+catch22 lr (48s)
+  fold 3/5 TSFresh-774+TDA-90 hgb (615s)
+  fold 3/5 TSFresh-774+catch22 hgb (566s)
+  fold 3/5 done (3833s)
+  fold 4/5 TSFresh-774+TDA-90 lr (52s)
+  fold 4/5 TSFresh-774+catch22 lr (47s)
+  fold 4/5 TSFresh-774+TDA-90 hgb (619s)
+  fold 4/5 TSFresh-774+catch22 hgb (564s)
+  fold 4/5 done (5115s)
+  fold 5/5 TSFresh-774+TDA-90 lr (51s)
+  fold 5/5 TSFresh-774+catch22 lr (48s)
+  fold 5/5 TSFresh-774+TDA-90 hgb (614s)
+  fold 5/5 TSFresh-774+catch22 hgb (571s)
+  fold 5/5 done (6400s)
+Saved -> /home/iguzel/work/tda-nonstationarity/runs/paper/complementarity (6400s)
+[2026-10-14 23:37:34] <<< detectors_complementarity
+[2026-10-14 23:37:34] >>> detectors_budget
+36000 series, pool 864 features (TSFresh 774, TDA 90), top-100, folds of the main run
+  fold 1 S: MI 15s, TDA share of union top-100 0.37 (38s)
+  fold 1 V: MI 12s, TDA share of union top-100 0.35 (78s)
+  fold 1 T: MI 12s, TDA share of union top-100 0.19 (122s)
+  fold 1 R: MI 13s, TDA share of union top-100 0.05 (163s)
+  fold 1 M: MI 12s, TDA share of union top-100 0.21 (202s)
+  fold 1 Q: MI 13s, TDA share of union top-100 0.28 (239s)
+  fold 1 P: MI 12s, TDA share of union top-100 0.36 (277s)
+  fold 1 C: MI 12s, TDA share of union top-100 0.22 (314s)
+  fold 2 S: MI 13s, TDA share of union top-100 0.37 (350s)
+  fold 2 V: MI 12s, TDA share of union top-100 0.32 (388s)
+  fold 2 T: MI 12s, TDA share of union top-100 0.20 (430s)
+  fold 2 R: MI 13s, TDA share of union top-100 0.04 (473s)
+  fold 2 M: MI 12s, TDA share of union top-100 0.20 (512s)
+  fold 2 Q: MI 13s, TDA share of union top-100 0.28 (549s)
+  fold 2 P: MI 12s, TDA share of union top-100 0.36 (587s)
+  fold 2 C: MI 12s, TDA share of union top-100 0.22 (624s)
+  fold 3 S: MI 13s, TDA share of union top-100 0.37 (660s)
+  fold 3 V: MI 12s, TDA share of union top-100 0.34 (699s)
+  fold 3 T: MI 12s, TDA share of union top-100 0.20 (741s)
+  fold 3 R: MI 13s, TDA share of union top-100 0.04 (783s)
+  fold 3 M: MI 13s, TDA share of union top-100 0.23 (822s)
+  fold 3 Q: MI 13s, TDA share of union top-100 0.29 (858s)
+  fold 3 P: MI 12s, TDA share of union top-100 0.38 (898s)
+  fold 3 C: MI 12s, TDA share of union top-100 0.26 (935s)
+  fold 4 S: MI 13s, TDA share of union top-100 0.37 (970s)
+  fold 4 V: MI 12s, TDA share of union top-100 0.34 (1008s)
+  fold 4 T: MI 12s, TDA share of union top-100 0.21 (1050s)
+  fold 4 R: MI 13s, TDA share of union top-100 0.04 (1093s)
+  fold 4 M: MI 12s, TDA share of union top-100 0.20 (1133s)
+  fold 4 Q: MI 13s, TDA share of union top-100 0.29 (1170s)
+  fold 4 P: MI 12s, TDA share of union top-100 0.37 (1208s)
+  fold 4 C: MI 12s, TDA share of union top-100 0.21 (1247s)
+  fold 5 S: MI 13s, TDA share of union top-100 0.37 (1281s)
+  fold 5 V: MI 12s, TDA share of union top-100 0.32 (1318s)
+  fold 5 T: MI 12s, TDA share of union top-100 0.20 (1361s)
+  fold 5 R: MI 13s, TDA share of union top-100 0.04 (1405s)
+  fold 5 M: MI 12s, TDA share of union top-100 0.20 (1446s)
+  fold 5 Q: MI 13s, TDA share of union top-100 0.29 (1483s)
+  fold 5 P: MI 12s, TDA share of union top-100 0.36 (1521s)
+  fold 5 C: MI 12s, TDA share of union top-100 0.25 (1557s)
+Saved -> /home/iguzel/work/tda-nonstationarity/runs/paper/budget (1557s)
+[2026-10-15 00:03:33] <<< detectors_budget
+[2026-10-15 00:03:33] >>> stats_main
+=== /home/iguzel/work/tda-nonstationarity/runs/paper/main: 5 levels, 5 folds; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+
+T1/T2  mean of the eight detectors, bal_acc
+        set model            L1            L2            L3            L4    drop L1->L4
+     TDA-90    lr 0.846 (0.002) 0.835 (0.002) 0.827 (0.002) 0.817 (0.004) -0.029 (0.005)
+TSFresh-774    lr 0.894 (0.003) 0.865 (0.001) 0.839 (0.002) 0.816 (0.003) -0.078 (0.006)
+    catch22    lr 0.744 (0.003) 0.753 (0.002) 0.734 (0.002) 0.717 (0.006) -0.027 (0.008)
+     TDA-90   hgb 0.897 (0.002) 0.870 (0.002) 0.848 (0.003) 0.830 (0.003) -0.067 (0.004)
+TSFresh-774   hgb 0.925 (0.004) 0.905 (0.001) 0.878 (0.001) 0.846 (0.004) -0.079 (0.008)
+    catch22   hgb 0.887 (0.002) 0.861 (0.003) 0.836 (0.001) 0.813 (0.005) -0.074 (0.006)
+ MiniRocket ridge 0.878 (0.006) 0.853 (0.002) 0.816 (0.002) 0.783 (0.006) -0.095 (0.011)
+
+T2/T3  TDA-90 minus each set (bal_acc); drop difference > 0 = TDA-90 degrades less
+                       comparison          drop difference                  level 1                  level 4
+   TDA-90 (lr) - TSFresh-774 (lr) +0.048 (0.002) p=0.000** -0.048 (0.003) p=0.000**   +0.000 (0.001) p=0.810
+       TDA-90 (lr) - catch22 (lr)   -0.002 (0.006) p=0.718 +0.102 (0.003) p=0.000** +0.099 (0.005) p=0.000**
+ TDA-90 (lr) - MiniRocket (ridge) +0.065 (0.008) p=0.001** -0.032 (0.006) p=0.005** +0.034 (0.005) p=0.002**
+ TDA-90 (hgb) - TSFresh-774 (hgb)  +0.013 (0.004) p=0.041* -0.028 (0.003) p=0.000** -0.015 (0.002) p=0.001**
+     TDA-90 (hgb) - catch22 (hgb)   +0.007 (0.004) p=0.115 +0.010 (0.002) p=0.006** +0.017 (0.004) p=0.009**
+TDA-90 (hgb) - MiniRocket (ridge)  +0.028 (0.008) p=0.022*  +0.019 (0.004) p=0.013* +0.047 (0.004) p=0.000**
+
+T1/T2  mean of the eight detectors, auc
+        set model            L1            L2            L3            L4    drop L1->L4
+     TDA-90    lr 0.913 (0.002) 0.898 (0.002) 0.894 (0.002) 0.888 (0.003) -0.025 (0.005)
+TSFresh-774    lr 0.945 (0.003) 0.929 (0.002) 0.910 (0.002) 0.891 (0.002) -0.054 (0.004)
+    catch22    lr 0.803 (0.004) 0.818 (0.002) 0.800 (0.002) 0.784 (0.005) -0.019 (0.009)
+     TDA-90   hgb 0.953 (0.002) 0.932 (0.002) 0.916 (0.002) 0.906 (0.002) -0.047 (0.004)
+TSFresh-774   hgb 0.970 (0.002) 0.963 (0.001) 0.943 (0.000) 0.917 (0.002) -0.053 (0.004)
+    catch22   hgb 0.941 (0.002) 0.927 (0.001) 0.909 (0.001) 0.891 (0.004) -0.051 (0.005)
+ MiniRocket ridge 0.916 (0.006) 0.903 (0.002) 0.877 (0.001) 0.849 (0.004) -0.067 (0.008)
+
+T2/T3  TDA-90 minus each set (auc); drop difference > 0 = TDA-90 degrades less
+                       comparison          drop difference                  level 1                  level 4
+   TDA-90 (lr) - TSFresh-774 (lr) +0.029 (0.003) p=0.000** -0.032 (0.002) p=0.000**   -0.003 (0.002) p=0.260
+       TDA-90 (lr) - catch22 (lr)   -0.006 (0.008) p=0.464 +0.111 (0.004) p=0.000** +0.104 (0.005) p=0.000**
+ TDA-90 (lr) - MiniRocket (ridge) +0.042 (0.005) p=0.001**   -0.003 (0.006) p=0.620 +0.039 (0.003) p=0.000**
+ TDA-90 (hgb) - TSFresh-774 (hgb)   +0.005 (0.003) p=0.108 -0.017 (0.002) p=0.001** -0.011 (0.001) p=0.000**
+     TDA-90 (hgb) - catch22 (hgb)   +0.003 (0.003) p=0.415 +0.012 (0.002) p=0.002** +0.015 (0.002) p=0.003**
+TDA-90 (hgb) - MiniRocket (ridge)  +0.019 (0.006) p=0.025* +0.037 (0.006) p=0.003** +0.056 (0.002) p=0.000**
+
+T4  balanced accuracy per detector, level 1
+char                   S      V      T      R      M      Q      P      C
+set         model                                                        
+MiniRocket  ridge  0.986  0.793  0.966  0.941  0.981  0.996  0.583  0.776
+TDA-90      hgb    0.977  0.871  0.948  0.898  0.957  0.999  0.760  0.762
+            lr     0.975  0.832  0.878  0.816  0.894  0.995  0.717  0.661
+TSFresh-774 hgb    0.984  0.827  0.987  0.971  0.994  0.996  0.761  0.879
+            lr     0.977  0.757  0.979  0.943  0.976  0.992  0.728  0.800
+catch22     hgb    0.976  0.721  0.977  0.925  0.988  0.989  0.742  0.774
+            lr     0.930  0.433  0.896  0.770  0.936  0.766  0.595  0.626
+
+T4  balanced accuracy per detector, level 4
+char                   S      V      T      R      M      Q      P      C
+set         model                                                        
+MiniRocket  ridge  0.966  0.776  0.670  0.725  0.881  0.959  0.644  0.643
+TDA-90      hgb    0.900  0.799  0.682  0.727  0.896  0.991  0.858  0.786
+            lr     0.898  0.782  0.653  0.755  0.854  0.991  0.825  0.773
+TSFresh-774 hgb    0.944  0.758  0.694  0.722  0.904  0.994  0.927  0.822
+            lr     0.915  0.702  0.657  0.731  0.859  0.964  0.909  0.793
+catch22     hgb    0.907  0.717  0.671  0.724  0.863  0.949  0.878  0.793
+            lr     0.850  0.638  0.577  0.657  0.664  0.832  0.804  0.716
+
+T4  per detector at level 4, TDA-90 minus each set (balanced accuracy)
+                       comparison                        S                        V                        T                        R                        M                        Q                        P                        C
+   TDA-90 (lr) - TSFresh-774 (lr)   -0.017 (0.010) p=0.153 +0.080 (0.006) p=0.000**   -0.004 (0.013) p=0.792  +0.024 (0.007) p=0.026*   -0.005 (0.006) p=0.479 +0.027 (0.004) p=0.003** -0.083 (0.004) p=0.000** -0.020 (0.003) p=0.004**
+       TDA-90 (lr) - catch22 (lr) +0.049 (0.009) p=0.006** +0.144 (0.004) p=0.000** +0.077 (0.005) p=0.000** +0.099 (0.017) p=0.004** +0.190 (0.010) p=0.000** +0.159 (0.011) p=0.000**  +0.021 (0.006) p=0.019* +0.057 (0.002) p=0.000**
+ TDA-90 (lr) - MiniRocket (ridge) -0.068 (0.013) p=0.006**   +0.007 (0.009) p=0.504   -0.017 (0.015) p=0.325   +0.030 (0.021) p=0.236 -0.027 (0.004) p=0.002** +0.032 (0.005) p=0.004** +0.182 (0.005) p=0.000** +0.130 (0.012) p=0.000**
+ TDA-90 (hgb) - TSFresh-774 (hgb) -0.044 (0.009) p=0.007** +0.041 (0.006) p=0.002**   -0.012 (0.009) p=0.223   +0.005 (0.010) p=0.623   -0.008 (0.005) p=0.179   -0.003 (0.003) p=0.467 -0.069 (0.010) p=0.002** -0.035 (0.005) p=0.003**
+     TDA-90 (hgb) - catch22 (hgb)   -0.007 (0.016) p=0.698 +0.083 (0.008) p=0.000**   +0.010 (0.018) p=0.594   +0.003 (0.008) p=0.727 +0.033 (0.005) p=0.003** +0.043 (0.005) p=0.001**  -0.019 (0.005) p=0.017*   -0.007 (0.004) p=0.139
+TDA-90 (hgb) - MiniRocket (ridge) -0.066 (0.009) p=0.002**   +0.024 (0.011) p=0.088   +0.012 (0.009) p=0.255   +0.002 (0.018) p=0.917   +0.015 (0.006) p=0.083 +0.032 (0.004) p=0.002** +0.215 (0.005) p=0.000** +0.143 (0.011) p=0.000**
+
+T5  all eight right, by level (out-of-fold)
+        set model    L0    L1    L2    L3    L4    L5
+     TDA-90    lr 0.220 0.229 0.203 0.228 0.251 0.241
+TSFresh-774    lr 0.314 0.352 0.283 0.278 0.251 0.296
+    catch22    lr 0.040 0.034 0.067 0.089 0.100 0.110
+     TDA-90   hgb 0.318 0.410 0.337 0.304 0.281 0.304
+TSFresh-774   hgb 0.418 0.512 0.443 0.406 0.327 0.403
+    catch22   hgb 0.152 0.268 0.267 0.272 0.247 0.211
+ MiniRocket ridge 0.146 0.288 0.305 0.250 0.199 0.190
+[2026-10-15 00:03:35] <<< stats_main
+[2026-10-15 00:03:35] >>> stats_complementarity
+=== complementarity (addendum v2): TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical (36000 series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+
+T6  mean of the eight detectors, bal_acc
+model                 set            L1            L2            L3            L4
+  hgb         TSFresh-774 0.925 (0.004) 0.905 (0.001) 0.878 (0.001) 0.846 (0.004)
+  hgb  TSFresh-774+TDA-90 0.935 (0.003) 0.920 (0.001) 0.891 (0.001) 0.859 (0.004)
+  hgb TSFresh-774+catch22 0.929 (0.002) 0.909 (0.002) 0.883 (0.001) 0.851 (0.003)
+   lr         TSFresh-774 0.894 (0.003) 0.865 (0.001) 0.839 (0.002) 0.816 (0.003)
+   lr  TSFresh-774+TDA-90 0.916 (0.004) 0.894 (0.001) 0.870 (0.002) 0.848 (0.004)
+   lr TSFresh-774+catch22 0.896 (0.002) 0.871 (0.001) 0.844 (0.002) 0.818 (0.005)
+
+T7/T8  gain over TSFresh-774 alone (bal_acc); last row per model: TDA-90's gain minus catch22's at level 4
+model                added                  gain L1                  gain L2                  gain L3                  gain L4        gain L4 - gain L1
+  hgb               TDA-90  +0.010 (0.003) p=0.025* +0.015 (0.001) p=0.000** +0.013 (0.002) p=0.003** +0.013 (0.002) p=0.005**   +0.004 (0.004) p=0.426
+  hgb              catch22   +0.004 (0.003) p=0.252 +0.004 (0.001) p=0.007**  +0.005 (0.001) p=0.020*  +0.006 (0.002) p=0.032*   +0.002 (0.004) p=0.649
+  hgb TDA-90 minus catch22                                                                            +0.007 (0.002) p=0.009**                         
+   lr               TDA-90 +0.022 (0.002) p=0.000** +0.029 (0.001) p=0.000** +0.031 (0.001) p=0.000** +0.032 (0.002) p=0.000** +0.010 (0.002) p=0.007**
+   lr              catch22   +0.002 (0.002) p=0.434 +0.006 (0.001) p=0.005** +0.005 (0.001) p=0.003**   +0.002 (0.002) p=0.334   +0.001 (0.002) p=0.824
+   lr TDA-90 minus catch22                                                                            +0.030 (0.004) p=0.001**                         
+
+T6  mean of the eight detectors, auc
+model                 set            L1            L2            L3            L4
+  hgb         TSFresh-774 0.970 (0.002) 0.963 (0.001) 0.943 (0.000) 0.917 (0.002)
+  hgb  TSFresh-774+TDA-90 0.976 (0.001) 0.972 (0.000) 0.953 (0.000) 0.931 (0.001)
+  hgb TSFresh-774+catch22 0.971 (0.002) 0.966 (0.001) 0.947 (0.000) 0.921 (0.001)
+   lr         TSFresh-774 0.945 (0.003) 0.929 (0.002) 0.910 (0.002) 0.891 (0.002)
+   lr  TSFresh-774+TDA-90 0.964 (0.002) 0.953 (0.001) 0.936 (0.002) 0.918 (0.002)
+   lr TSFresh-774+catch22 0.949 (0.002) 0.933 (0.002) 0.913 (0.002) 0.894 (0.002)
+
+T7/T8  gain over TSFresh-774 alone (auc); last row per model: TDA-90's gain minus catch22's at level 4
+model                added                  gain L1                  gain L2                  gain L3                  gain L4       gain L4 - gain L1
+  hgb               TDA-90  +0.006 (0.002) p=0.031* +0.009 (0.001) p=0.000** +0.010 (0.001) p=0.000** +0.014 (0.001) p=0.000** +0.007 (0.003) p=0.044*
+  hgb              catch22   +0.001 (0.001) p=0.344 +0.003 (0.000) p=0.000** +0.003 (0.000) p=0.002** +0.004 (0.001) p=0.006**  +0.003 (0.002) p=0.148
+  hgb TDA-90 minus catch22                                                                            +0.010 (0.001) p=0.001**                        
+   lr               TDA-90 +0.019 (0.001) p=0.000** +0.024 (0.001) p=0.000** +0.026 (0.000) p=0.000** +0.027 (0.001) p=0.000** +0.008 (0.002) p=0.028*
+   lr              catch22 +0.003 (0.001) p=0.004** +0.004 (0.000) p=0.000** +0.004 (0.000) p=0.000**  +0.002 (0.001) p=0.048*  -0.001 (0.001) p=0.255
+   lr TDA-90 minus catch22                                                                            +0.024 (0.001) p=0.000**                        
+
+T9  gain from TDA-90 per detector at level 4
+ metric model                      S                        V                        T                        R                        M                        Q                        P                        C
+bal_acc   hgb +0.002 (0.002) p=0.257 +0.045 (0.004) p=0.000**   +0.002 (0.009) p=0.842   +0.010 (0.007) p=0.241 +0.024 (0.005) p=0.008**   +0.001 (0.002) p=0.605   +0.009 (0.003) p=0.054   +0.012 (0.008) p=0.200
+bal_acc    lr +0.005 (0.007) p=0.460 +0.091 (0.005) p=0.000**  +0.017 (0.006) p=0.046*   +0.021 (0.011) p=0.113 +0.047 (0.004) p=0.000** +0.027 (0.004) p=0.002** +0.017 (0.003) p=0.003** +0.031 (0.005) p=0.003**
+    auc   hgb -0.000 (0.001) p=0.691 +0.057 (0.004) p=0.000**   +0.003 (0.003) p=0.469  +0.016 (0.005) p=0.033* +0.013 (0.001) p=0.000**   +0.000 (0.000) p=0.138   +0.002 (0.001) p=0.077 +0.020 (0.004) p=0.006**
+    auc    lr +0.002 (0.001) p=0.066 +0.096 (0.004) p=0.000** +0.017 (0.003) p=0.003** +0.023 (0.003) p=0.002** +0.028 (0.002) p=0.000** +0.007 (0.001) p=0.005** +0.007 (0.002) p=0.008** +0.034 (0.005) p=0.002**
+[2026-10-15 00:03:36] <<< stats_complementarity
+[2026-10-15 00:03:36] >>> stats_budget
+=== equal feature budget (addendum v3) (TSFresh top-100 vs union top-100); folds of the final run; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+
+T10  mean of the eight detectors, bal_acc
+model                set            L1            L2            L3            L4
+  hgb        TSFresh-774 0.925 (0.004) 0.905 (0.001) 0.878 (0.001) 0.846 (0.004)
+  hgb    TSFresh top-100 0.921 (0.005) 0.895 (0.001) 0.865 (0.002) 0.829 (0.004)
+  hgb      union top-100 0.930 (0.004) 0.912 (0.002) 0.880 (0.001) 0.844 (0.002)
+  hgb TSFresh-774+TDA-90 0.935 (0.003) 0.920 (0.001) 0.891 (0.001) 0.859 (0.004)
+   lr        TSFresh-774 0.894 (0.003) 0.865 (0.001) 0.839 (0.002) 0.816 (0.003)
+   lr    TSFresh top-100 0.877 (0.003) 0.835 (0.001) 0.807 (0.001) 0.786 (0.005)
+   lr      union top-100 0.904 (0.004) 0.874 (0.001) 0.847 (0.002) 0.821 (0.005)
+   lr TSFresh-774+TDA-90 0.916 (0.004) 0.894 (0.001) 0.870 (0.002) 0.848 (0.004)
+
+T11  union top-100 minus TSFresh top-100 (bal_acc)
+model                       L1                       L2                       L3                       L4                L4 - L1
+  hgb  +0.009 (0.003) p=0.022* +0.018 (0.001) p=0.000** +0.015 (0.003) p=0.005** +0.016 (0.002) p=0.001** +0.006 (0.004) p=0.175
+   lr +0.027 (0.003) p=0.001** +0.039 (0.001) p=0.000** +0.040 (0.003) p=0.000** +0.035 (0.003) p=0.001** +0.008 (0.003) p=0.071
+
+T10  mean of the eight detectors, auc
+model                set            L1            L2            L3            L4
+  hgb        TSFresh-774 0.970 (0.002) 0.963 (0.001) 0.943 (0.000) 0.917 (0.002)
+  hgb    TSFresh top-100 0.967 (0.002) 0.959 (0.001) 0.934 (0.001) 0.899 (0.002)
+  hgb      union top-100 0.975 (0.002) 0.969 (0.001) 0.947 (0.001) 0.917 (0.002)
+  hgb TSFresh-774+TDA-90 0.976 (0.001) 0.972 (0.000) 0.953 (0.000) 0.931 (0.001)
+   lr        TSFresh-774 0.945 (0.003) 0.929 (0.002) 0.910 (0.002) 0.891 (0.002)
+   lr    TSFresh top-100 0.935 (0.002) 0.905 (0.002) 0.880 (0.001) 0.856 (0.004)
+   lr      union top-100 0.958 (0.002) 0.940 (0.001) 0.918 (0.002) 0.892 (0.003)
+   lr TSFresh-774+TDA-90 0.964 (0.002) 0.953 (0.001) 0.936 (0.002) 0.918 (0.002)
+
+T11  union top-100 minus TSFresh top-100 (auc)
+model                       L1                       L2                       L3                       L4                  L4 - L1
+  hgb +0.008 (0.002) p=0.007** +0.011 (0.000) p=0.000** +0.012 (0.001) p=0.000** +0.018 (0.001) p=0.000** +0.009 (0.001) p=0.002**
+   lr +0.023 (0.002) p=0.000** +0.035 (0.001) p=0.000** +0.037 (0.002) p=0.000** +0.036 (0.002) p=0.000** +0.013 (0.003) p=0.008**
+
+T12  share of TDA-90 features in each detector's union top-100
+      TDA share  min over folds  max over folds
+char                                           
+S         0.370            0.37            0.37
+V         0.334            0.32            0.35
+T         0.200            0.19            0.21
+R         0.042            0.04            0.05
+M         0.208            0.20            0.23
+Q         0.286            0.28            0.29
+P         0.366            0.36            0.38
+C         0.232            0.21            0.26
+  TDA-90 features most often selected, per detector (folds out of 5):
+    S: pwin_H0__W1__mean (5); pwin_H0__carl_f2__mean (5); pwin_H1__W1__mean (5); pwin_H1__carl_f1__mean (5); pwin_H1__carl_f2__mean (5)
+    V: pwin_H0__W1__std (5); pwin_H0__bottleneck__mean (5); pwin_H0__carl_f2__mean (5); pwin_H0__entropy__mean (5); pwin_H0__entropy__std (5)
+    T: pwin_H0__W1__mean (5); pwin_H1__bottleneck__mean (5); pwin_H1__carl_f1__mean (5); pwin_H1__landscape_L1__mean (5); topo__sub_H0__carl_f1 (5)
+    R: pwin_H0__bottleneck__std (5); pwin_H0__entropy__mean (5); pwin_H0__entropy__std (5); pwin_H0__landscape_L1__std (5); topo__sub_H0__carl_f1 (1)
+    M: pwin_H0__W1__std (5); pwin_H0__bottleneck__std (5); pwin_H0__entropy__std (5); pwin_H0__landscape_L1__std (5); pwin_H1__W1__std (5)
+    Q: pwin_H0__W1__std (5); pwin_H0__bottleneck__std (5); pwin_H0__entropy__mean (5); pwin_H0__entropy__std (5); pwin_H1__W1__std (5)
+    P: pwin_H0__W1__std (5); pwin_H0__bottleneck__mean (5); pwin_H0__bottleneck__std (5); pwin_H0__carl_f2__mean (5); pwin_H0__carl_f2__std (5)
+    C: pwin_H0__bottleneck__mean (5); pwin_H0__bottleneck__std (5); pwin_H0__carl_f2__std (5); pwin_H0__carl_f4__mean (5); pwin_H0__carl_f4__std (5)
+
+T13  union top-100 minus TSFresh top-100 per detector at level 4
+ metric model                       S                        V                        T                        R                        M                        Q                        P                        C
+bal_acc   hgb  -0.003 (0.009) p=0.743 +0.049 (0.008) p=0.004**   +0.008 (0.011) p=0.476   +0.013 (0.008) p=0.172 +0.018 (0.003) p=0.007**   +0.003 (0.002) p=0.244  +0.015 (0.005) p=0.037*  +0.020 (0.007) p=0.044*
+bal_acc    lr  +0.008 (0.006) p=0.224 +0.080 (0.012) p=0.003**  +0.033 (0.009) p=0.020*   +0.004 (0.007) p=0.639 +0.031 (0.006) p=0.008** +0.050 (0.008) p=0.003** +0.020 (0.003) p=0.003** +0.053 (0.008) p=0.002**
+    auc   hgb -0.004 (0.001) p=0.041* +0.074 (0.006) p=0.000**   +0.017 (0.006) p=0.054 +0.015 (0.002) p=0.001** +0.013 (0.002) p=0.003**   +0.000 (0.000) p=0.058   +0.004 (0.002) p=0.079 +0.021 (0.004) p=0.005**
+    auc    lr  +0.004 (0.002) p=0.148 +0.089 (0.010) p=0.001** +0.045 (0.003) p=0.000** +0.018 (0.003) p=0.003** +0.033 (0.003) p=0.001** +0.016 (0.003) p=0.007** +0.010 (0.001) p=0.001** +0.073 (0.004) p=0.000**
+[2026-10-15 00:03:37] <<< stats_budget
+[2026-10-15 00:03:37] >>> interpret
+=== Interpretation of the TDA-90 detectors — exploratory, not in the analysis plan
+
+##### V
+
+  1. largest logistic-regression coefficients (standardised features)
+                                 mean coef     sd  same sign in folds                        block
+  feature                                                                                         
+  pwin_H0__landscape_L1__std         8.623  0.054                   5   paper H0, std over windows
+  pwin_H0__bottleneck__std          -8.025  0.114                   5   paper H0, std over windows
+  pwin_H0__bottleneck__mean          7.964  0.078                   5  paper H0, mean over windows
+  pwin_H0__landscape_L1__mean       -6.778  0.085                   5  paper H0, mean over windows
+  pwin_H0__W1__mean                 -3.835  0.084                   5  paper H0, mean over windows
+  topo__sub_H0__pers_std            -2.894  0.106                   5     whole-series sublevel H0
+  pwin_H1__carl_f1__mean            -2.876  0.307                   5  paper H1, mean over windows
+  pwin_H0__carl_f4__std             -2.682  0.088                   5   paper H0, std over windows
+  pwin_H1__carl_f2__mean             2.513  0.139                   5  paper H1, mean over windows
+  pwin_H0__entropy__std             -2.496  0.033                   5   paper H0, std over windows
+  win_sub_H0__pers_second__mean      2.378  0.253                   5         windowed sublevel H0
+  pwin_H0__carl_f4__mean             2.359  0.090                   5  paper H0, mean over windows
+
+  sum of |mean coef| per block
+  block
+  paper H0, std over windows     23.99
+  paper H0, mean over windows    23.66
+  windowed sublevel H0           21.14
+  whole-series sublevel H0       14.66
+  paper H1, mean over windows     6.81
+  paper H1, std over windows      4.94
+
+  2. blocks: logistic regression on a block alone / without it (mean of 5 folds)
+                                           L1     L4  AUC L1  AUC L4
+  set                                                               
+  TDA-90 (all 90)                       0.832  0.782   0.920   0.875
+  only paper H0, mean over windows (6)  0.755  0.621   0.872   0.672
+  without paper H0, mean over windows   0.805  0.760   0.903   0.846
+  only paper H0, std over windows (6)   0.599  0.657   0.768   0.773
+  without paper H0, std over windows    0.823  0.747   0.905   0.838
+  only paper H1, mean over windows (8)  0.733  0.656   0.809   0.714
+  without paper H1, mean over windows   0.816  0.774   0.911   0.868
+  only paper H1, std over windows (8)   0.697  0.628   0.776   0.666
+  without paper H1, std over windows    0.824  0.776   0.922   0.868
+  only windowed sublevel H0 (36)        0.717  0.678   0.797   0.744
+  without windowed sublevel H0          0.824  0.783   0.914   0.873
+  only whole-series sublevel H0 (26)    0.744  0.629   0.825   0.668
+  without whole-series sublevel H0      0.827  0.775   0.907   0.865
+
+  3. best single features, level 1 (direction-free AUC)
+     TDA-90:      pwin_H0__bottleneck__mean 0.911; pwin_H0__landscape_L1__mean 0.893; pwin_H0__carl_f2__mean 0.890; win_sub_H0__pers_std__mean 0.885; win_sub_H0__pers_second__mean 0.878
+     TSFresh-774: data__agg_linear_trend__attr_"stderr"__chunk_len_10__f_agg_"var" 0.884; data__agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var" 0.865; data__absolute_maximum 0.856; data__mean_n_absolute_max__number_of_maxima_7 0.853; data__maximum 0.843
+
+  3. best single features, level 4 (direction-free AUC)
+     TDA-90:      pwin_H0__entropy__std 0.730; pwin_H0__W1__std 0.714; pwin_H0__entropy__mean 0.640; pwin_H0__bottleneck__std 0.636; win_sub_H0__pers_skew__range 0.631
+     TSFresh-774: data__lempel_ziv_complexity__bins_100 0.725; data__binned_entropy__max_bins_10 0.699; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.6__ql_0.4 0.687; data__lempel_ziv_complexity__bins_10 0.670; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.6__ql_0.2 0.659
+
+##### P
+
+  1. largest logistic-regression coefficients (standardised features)
+                                mean coef     sd  same sign in folds                        block
+  feature                                                                                        
+  pwin_H0__bottleneck__std          1.821  0.171                   5   paper H0, std over windows
+  win_sub_H0__pers_second__std     -1.590  0.049                   5         windowed sublevel H0
+  win_sub_H0__pers_std__mean        1.535  0.137                   5         windowed sublevel H0
+  pwin_H0__landscape_L1__std       -1.512  0.112                   5   paper H0, std over windows
+  pwin_H0__carl_f2__std             1.479  0.091                   5   paper H0, std over windows
+  pwin_H1__W1__mean                 1.417  0.147                   5  paper H1, mean over windows
+  win_sub_H0__total_pers__mean      1.249  0.247                   5         windowed sublevel H0
+  pwin_H1__carl_f1__mean           -1.243  0.127                   5  paper H1, mean over windows
+  topo__sub_H0__carl_f3             1.206  0.036                   5     whole-series sublevel H0
+  win_sub_H0__carl_f1__maxjump     -1.170  0.031                   5         windowed sublevel H0
+  topo__sub_H0__landscape_l2       -1.121  0.152                   5     whole-series sublevel H0
+  pwin_H0__entropy__std             1.072  0.030                   5   paper H0, std over windows
+
+  sum of |mean coef| per block
+  block
+  windowed sublevel H0           15.75
+  whole-series sublevel H0        8.03
+  paper H0, std over windows      6.58
+  paper H1, mean over windows     4.70
+  paper H0, mean over windows     3.13
+  paper H1, std over windows      1.81
+
+  2. blocks: logistic regression on a block alone / without it (mean of 5 folds)
+                                           L1     L4  AUC L1  AUC L4
+  set                                                               
+  TDA-90 (all 90)                       0.717  0.825   0.817   0.909
+  only paper H0, mean over windows (6)  0.514  0.737   0.662   0.830
+  without paper H0, mean over windows   0.718  0.823   0.821   0.909
+  only paper H0, std over windows (6)   0.671  0.760   0.773   0.837
+  without paper H0, std over windows    0.707  0.817   0.809   0.902
+  only paper H1, mean over windows (8)  0.436  0.533   0.410   0.555
+  without paper H1, mean over windows   0.693  0.819   0.797   0.908
+  only paper H1, std over windows (8)   0.516  0.531   0.546   0.553
+  without paper H1, std over windows    0.726  0.816   0.821   0.904
+  only windowed sublevel H0 (36)        0.583  0.708   0.655   0.770
+  without windowed sublevel H0          0.727  0.808   0.830   0.897
+  only whole-series sublevel H0 (26)    0.606  0.735   0.676   0.806
+  without whole-series sublevel H0      0.708  0.810   0.806   0.898
+
+  3. best single features, level 1 (direction-free AUC)
+     TDA-90:      win_sub_H0__pers_q90__mean 0.864; win_sub_H0__pers_second__mean 0.854; win_sub_H0__pers_std__mean 0.849; pwin_H1__W1__mean 0.847; topo__sub_H0__pers_mean 0.845
+     TSFresh-774: data__change_quantiles__f_agg_"var"__isabs_False__qh_0.8__ql_0.2 0.874; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.8__ql_0.2 0.872; data__change_quantiles__f_agg_"var"__isabs_True__qh_0.8__ql_0.2 0.871; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.8__ql_0.0 0.868; data__change_quantiles__f_agg_"mean"__isabs_True__qh_1.0__ql_0.2 0.866
+
+  3. best single features, level 4 (direction-free AUC)
+     TDA-90:      pwin_H0__landscape_L1__std 0.831; pwin_H0__bottleneck__std 0.825; pwin_H0__landscape_L1__mean 0.823; pwin_H0__bottleneck__mean 0.784; pwin_H0__carl_f2__std 0.767
+     TSFresh-774: data__fft_aggregated__aggtype_"variance" 0.833; data__ar_coefficient__coeff_1__k_10 0.829; data__absolute_maximum 0.822; data__fft_aggregated__aggtype_"skew" 0.818; data__fft_aggregated__aggtype_"centroid" 0.815
+[2026-10-15 00:04:16] <<< interpret
+[2026-10-15 00:04:16] >>> diagnose
+=== Diagnosis from the out-of-fold scores — exploratory, not in the analysis plan; 36000 series, 72 valid combinations
+
+  exact by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.318  0.418  0.363  0.339  0.320  0.333
+                    independent  0.318  0.410  0.337  0.304  0.281  0.304
+              lr    constrained  0.220  0.267  0.249  0.275  0.306  0.273
+                    independent  0.220  0.229  0.203  0.228  0.251  0.241
+  TSFresh-774 hgb   constrained  0.418  0.514  0.456  0.429  0.366  0.427
+                    independent  0.418  0.512  0.443  0.406  0.327  0.403
+              lr    constrained  0.314  0.356  0.294  0.306  0.294  0.314
+                    independent  0.314  0.352  0.283  0.278  0.251  0.296
+  catch22     hgb   constrained  0.152  0.272  0.281  0.301  0.285  0.225
+                    independent  0.152  0.268  0.267  0.272  0.247  0.211
+              lr    constrained  0.040  0.053  0.116  0.132  0.162  0.129
+                    independent  0.040  0.034  0.067  0.089  0.100  0.110
+
+  hamming by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.902  0.901  0.875  0.854  0.848  0.861
+                    independent  0.901  0.897  0.868  0.848  0.844  0.858
+              lr    constrained  0.864  0.853  0.839  0.834  0.834  0.839
+                    independent  0.863  0.841  0.825  0.823  0.825  0.834
+  TSFresh-774 hgb   constrained  0.920  0.921  0.904  0.885  0.871  0.892
+                    independent  0.919  0.921  0.902  0.882  0.868  0.890
+              lr    constrained  0.896  0.883  0.861  0.846  0.840  0.849
+                    independent  0.895  0.881  0.856  0.839  0.833  0.846
+  catch22     hgb   constrained  0.864  0.869  0.854  0.842  0.833  0.830
+                    independent  0.862  0.866  0.849  0.836  0.827  0.826
+              lr    constrained  0.777  0.762  0.760  0.749  0.742  0.718
+                    independent  0.739  0.728  0.736  0.731  0.729  0.728
+
+  missed by level
+  level                              1      2      3      4      5
+  set         model rule                                          
+  TDA-90      hgb   constrained  0.114  0.151  0.173  0.190  0.190
+                    independent  0.104  0.136  0.155  0.175  0.181
+              lr    constrained  0.163  0.180  0.185  0.201  0.215
+                    independent  0.147  0.156  0.164  0.182  0.199
+  TSFresh-774 hgb   constrained  0.070  0.099  0.133  0.154  0.156
+                    independent  0.069  0.092  0.123  0.142  0.150
+              lr    constrained  0.092  0.132  0.167  0.199  0.214
+                    independent  0.088  0.122  0.153  0.186  0.206
+  catch22     hgb   constrained  0.094  0.130  0.167  0.207  0.236
+                    independent  0.086  0.120  0.151  0.194  0.224
+              lr    constrained  0.277  0.262  0.281  0.310  0.346
+                    independent  0.235  0.220  0.235  0.263  0.287
+
+  invented by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.098  0.097  0.116  0.130  0.114  0.054
+                    independent  0.099  0.103  0.131  0.150  0.138  0.077
+              lr    constrained  0.136  0.145  0.155  0.155  0.130  0.071
+                    independent  0.137  0.161  0.181  0.185  0.167  0.110
+  TSFresh-774 hgb   constrained  0.080  0.080  0.095  0.105  0.103  0.028
+                    independent  0.081  0.081  0.100  0.116  0.122  0.044
+              lr    constrained  0.104  0.120  0.142  0.146  0.121  0.045
+                    independent  0.105  0.124  0.152  0.165  0.148  0.068
+  catch22     hgb   constrained  0.136  0.136  0.151  0.152  0.126  0.059
+                    independent  0.138  0.141  0.162  0.171  0.152  0.091
+              lr    constrained  0.223  0.233  0.232  0.233  0.206  0.176
+                    independent  0.261  0.277  0.279  0.290  0.279  0.248
+
+  count_right by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.318  0.462  0.478  0.536  0.533  0.382
+                    independent  0.318  0.450  0.437  0.471  0.486  0.391
+              lr    constrained  0.220  0.332  0.389  0.482  0.546  0.327
+                    independent  0.220  0.288  0.321  0.409  0.477  0.376
+  TSFresh-774 hgb   constrained  0.418  0.537  0.526  0.581  0.547  0.444
+                    independent  0.418  0.534  0.506  0.541  0.495  0.454
+              lr    constrained  0.314  0.394  0.382  0.487  0.494  0.328
+                    independent  0.314  0.388  0.363  0.437  0.459  0.366
+  catch22     hgb   constrained  0.152  0.319  0.385  0.491  0.531  0.248
+                    independent  0.152  0.312  0.363  0.435  0.501  0.303
+              lr    constrained  0.040  0.129  0.305  0.405  0.480  0.166
+                    independent  0.040  0.093  0.194  0.308  0.401  0.398
+
+  stationary or not (non-stationary = any characteristic reported)
+          set model        rule  stationary_recall  nonstationary_recall  balanced
+       TDA-90   hgb independent              0.318                 0.994     0.656
+       TDA-90   hgb constrained              0.318                 0.994     0.656
+       TDA-90    lr independent              0.220                 0.995     0.607
+       TDA-90    lr constrained              0.220                 0.995     0.607
+  TSFresh-774   hgb independent              0.418                 0.995     0.706
+  TSFresh-774   hgb constrained              0.418                 0.995     0.706
+  TSFresh-774    lr independent              0.314                 0.995     0.654
+  TSFresh-774    lr constrained              0.314                 0.995     0.654
+      catch22   hgb independent              0.152                 0.997     0.574
+      catch22   hgb constrained              0.152                 0.997     0.574
+      catch22    lr independent              0.040                 0.999     0.519
+      catch22    lr constrained              0.040                 0.999     0.519
+
+  calibration of the eight probabilities, pooled
+          set model    ECE  Brier
+       TDA-90   hgb 0.0545 0.0935
+       TDA-90    lr 0.0709 0.1144
+  TSFresh-774   hgb 0.0384 0.0733
+  TSFresh-774    lr 0.0543 0.1001
+      catch22   hgb 0.0569 0.1014
+      catch22    lr 0.1155 0.1725
+
+  reliability, TDA-90 hgb: stated -> observed (n)
+    0.02->0.01 (107537)   0.15->0.09 (21085)   0.25->0.16 (19274)   0.35->0.24 (17282)   0.45->0.31 (16220)   0.55->0.40 (15726)   0.65->0.50 (14893)   0.75->0.64 (14129)   0.85->0.81 (13340)   0.97->0.98 (48514)
+
+  reliability, TDA-90 lr: stated -> observed (n)
+    0.02->0.01 (94381)   0.15->0.09 (22442)   0.25->0.16 (19242)   0.35->0.23 (18990)   0.45->0.29 (19412)   0.55->0.38 (19075)   0.65->0.48 (18064)   0.75->0.59 (16470)   0.85->0.75 (16197)   0.97->0.96 (43727)
+
+  example profiles, TDA-90 hgb, constrained decision (probability per characteristic)
+    true R         said RC        (wrong)   S 0.00  V 0.04  T 0.06  R 0.86  M 0.04  Q 0.00  P 0.20  C 0.58
+    true T         said SRC       (wrong)   S 0.68  V 0.27  T 0.47  R 0.65  M 0.12  Q 0.00  P 0.07  C 0.53
+    true SVT       said VTP       (wrong)   S 0.02  V 0.95  T 0.85  R 0.24  M 0.12  Q 0.00  P 0.59  C 0.33
+    true STP       said STP       (right)   S 0.98  V 0.38  T 0.80  R 0.28  M 0.20  Q 0.00  P 0.98  C 0.16
+    true STMC      said SVTMC     (wrong)   S 1.00  V 0.64  T 0.68  R 0.17  M 0.88  Q 0.00  P 0.02  C 0.63
+    true SVMC      said SVTMC     (wrong)   S 0.97  V 0.70  T 0.81  R 0.09  M 0.98  Q 0.00  P 0.05  C 0.97
+[2026-10-15 00:04:17] <<< diagnose
+end            2026-10-15 00:04:17

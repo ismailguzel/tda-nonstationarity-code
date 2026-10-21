@@ -1,0 +1,60 @@
+R sup-LM 5% critical value 5.619 (Python 5.679)
+
+test  decision agreement  python flag rate  R flag rate  max|stat diff|  corr(stat)
+S                 0.9864             0.842        0.844             nan         nan
+V                 1.0000             0.575        0.575        4.45e-05     1.00000
+T                 1.0000             0.785        0.785        4.04e-03     1.00000
+R                 0.9986             0.829        0.830        2.51e-08     1.00000
+M                 1.0000             0.894        0.894        9.30e-10     1.00000
+Q                 1.0000             0.137        0.137        2.75e-07     1.00000
+P                 0.9849             0.793        0.808        2.17e-07     1.00000
+
+M, textbook OLS-CUSUM with i.i.d. scale (strucchange): flag rate on the stationary class 0.210; LRV version 0.094
+
+mean of seven, balanced accuracy by level
+level       1      2      3      4
+src                               
+R       0.770  0.666  0.571  0.538
+python  0.773  0.668  0.571  0.538
+
+per cause, balanced accuracy L1 / L4
+level            1      4
+src    char              
+R      M     0.739  0.501
+       P     0.573  0.524
+       Q     0.971  0.694
+       R     0.795  0.502
+       S     0.747  0.501
+       T     0.792  0.495
+       V     0.776  0.552
+python M     0.739  0.501
+       P     0.589  0.524
+       Q     0.971  0.694
+       R     0.797  0.501
+       S     0.747  0.500
+       T     0.792  0.495
+       V     0.776  0.552
+
+share flagged by each test, single-cause classes (python)
+                        S      V      T      R      M      Q      P
+stationary          0.006  0.054  0.082  0.084  0.094  0.046  0.034
+stochastic_trend    0.934  0.032  0.872  0.958  0.990  0.026  0.064
+volatility          0.010  0.936  0.082  0.082  0.092  0.142  0.640
+trend               0.990  0.084  1.000  0.096  1.000  0.038  0.050
+trend_shift         0.960  0.066  0.638  1.000  0.998  0.038  0.058
+mean_shift          0.990  0.670  1.000  0.994  1.000  0.014  0.766
+variance_shift      0.010  0.992  0.090  0.084  0.134  0.994  0.750
+point_anomaly       0.022  0.414  0.102  0.106  0.118  0.020  0.560
+collective_anomaly  0.100  0.436  0.128  0.528  0.328  0.086  0.352
+
+same, R
+                        S      V      T      R      M      Q      P
+stationary          0.006  0.054  0.082  0.084  0.094  0.046  0.158
+stochastic_trend    0.936  0.032  0.872  0.958  0.990  0.026  0.188
+volatility          0.008  0.936  0.082  0.084  0.092  0.142  0.642
+trend               0.988  0.084  1.000  0.104  1.000  0.038  0.160
+trend_shift         0.960  0.066  0.638  1.000  0.998  0.038  0.176
+mean_shift          0.992  0.670  1.000  0.994  1.000  0.014  0.784
+variance_shift      0.010  0.992  0.090  0.086  0.134  0.994  0.750
+point_anomaly       0.022  0.414  0.102  0.112  0.118  0.020  0.588
+collective_anomaly  0.112  0.436  0.128  0.534  0.328  0.086  0.394

@@ -1,0 +1,105 @@
+=== Interpretation of the TDA-90 detectors — exploratory, not in the analysis plan
+
+##### V
+
+  1. largest logistic-regression coefficients (standardised features)
+                                 mean coef     sd  same sign in folds                        block
+  feature                                                                                         
+  pwin_H0__landscape_L1__std         8.623  0.054                   5   paper H0, std over windows
+  pwin_H0__bottleneck__std          -8.025  0.114                   5   paper H0, std over windows
+  pwin_H0__bottleneck__mean          7.964  0.078                   5  paper H0, mean over windows
+  pwin_H0__landscape_L1__mean       -6.778  0.085                   5  paper H0, mean over windows
+  pwin_H0__W1__mean                 -3.835  0.084                   5  paper H0, mean over windows
+  topo__sub_H0__pers_std            -2.894  0.106                   5     whole-series sublevel H0
+  pwin_H1__carl_f1__mean            -2.876  0.307                   5  paper H1, mean over windows
+  pwin_H0__carl_f4__std             -2.682  0.088                   5   paper H0, std over windows
+  pwin_H1__carl_f2__mean             2.513  0.139                   5  paper H1, mean over windows
+  pwin_H0__entropy__std             -2.496  0.033                   5   paper H0, std over windows
+  win_sub_H0__pers_second__mean      2.378  0.253                   5         windowed sublevel H0
+  pwin_H0__carl_f4__mean             2.359  0.090                   5  paper H0, mean over windows
+
+  sum of |mean coef| per block
+  block
+  paper H0, std over windows     23.99
+  paper H0, mean over windows    23.66
+  windowed sublevel H0           21.14
+  whole-series sublevel H0       14.66
+  paper H1, mean over windows     6.81
+  paper H1, std over windows      4.94
+
+  2. blocks: logistic regression on a block alone / without it (mean of 5 folds)
+                                           L1     L4  AUC L1  AUC L4
+  set                                                               
+  TDA-90 (all 90)                       0.832  0.782   0.920   0.875
+  only paper H0, mean over windows (6)  0.755  0.621   0.872   0.672
+  without paper H0, mean over windows   0.805  0.760   0.903   0.846
+  only paper H0, std over windows (6)   0.599  0.657   0.768   0.773
+  without paper H0, std over windows    0.823  0.747   0.905   0.838
+  only paper H1, mean over windows (8)  0.733  0.656   0.809   0.714
+  without paper H1, mean over windows   0.816  0.774   0.911   0.868
+  only paper H1, std over windows (8)   0.697  0.628   0.776   0.666
+  without paper H1, std over windows    0.824  0.776   0.922   0.868
+  only windowed sublevel H0 (36)        0.717  0.678   0.797   0.744
+  without windowed sublevel H0          0.824  0.783   0.914   0.873
+  only whole-series sublevel H0 (26)    0.744  0.629   0.825   0.668
+  without whole-series sublevel H0      0.827  0.775   0.907   0.865
+
+  3. best single features, level 1 (direction-free AUC)
+     TDA-90:      pwin_H0__bottleneck__mean 0.911; pwin_H0__landscape_L1__mean 0.893; pwin_H0__carl_f2__mean 0.890; win_sub_H0__pers_std__mean 0.885; win_sub_H0__pers_second__mean 0.878
+     TSFresh-774: data__agg_linear_trend__attr_"stderr"__chunk_len_10__f_agg_"var" 0.884; data__agg_linear_trend__attr_"stderr"__chunk_len_5__f_agg_"var" 0.865; data__absolute_maximum 0.856; data__mean_n_absolute_max__number_of_maxima_7 0.853; data__maximum 0.843
+
+  3. best single features, level 4 (direction-free AUC)
+     TDA-90:      pwin_H0__entropy__std 0.730; pwin_H0__W1__std 0.714; pwin_H0__entropy__mean 0.640; pwin_H0__bottleneck__std 0.636; win_sub_H0__pers_skew__range 0.631
+     TSFresh-774: data__lempel_ziv_complexity__bins_100 0.725; data__binned_entropy__max_bins_10 0.699; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.6__ql_0.4 0.687; data__lempel_ziv_complexity__bins_10 0.670; data__change_quantiles__f_agg_"mean"__isabs_True__qh_0.6__ql_0.2 0.659
+
+##### M
+
+  1. largest logistic-regression coefficients (standardised features)
+                                mean coef     sd  same sign in folds                        block
+  feature                                                                                        
+  pwin_H0__bottleneck__std          6.460  0.134                   5   paper H0, std over windows
+  pwin_H0__landscape_L1__std       -5.792  0.117                   5   paper H0, std over windows
+  win_sub_H0__carl_f1__range       -5.106  0.115                   5         windowed sublevel H0
+  win_sub_H0__carl_f1__std          4.762  0.089                   5         windowed sublevel H0
+  topo__sub_H0__total_pers          4.187  0.201                   5     whole-series sublevel H0
+  pwin_H0__W1__mean                -3.721  0.133                   5  paper H0, mean over windows
+  pwin_H0__landscape_L1__mean      -3.128  0.194                   5  paper H0, mean over windows
+  topo__sub_H0__landscape_l2        2.951  0.189                   5     whole-series sublevel H0
+  pwin_H1__landscape_L1__mean      -2.649  0.198                   5  paper H1, mean over windows
+  win_sub_H0__total_pers__mean     -2.533  0.119                   5         windowed sublevel H0
+  pwin_H1__landscape_L1__std        2.390  0.063                   5   paper H1, std over windows
+  win_sub_H0__pers_second__std     -2.382  0.080                   5         windowed sublevel H0
+
+  sum of |mean coef| per block
+  block
+  windowed sublevel H0           30.81
+  whole-series sublevel H0       18.51
+  paper H0, std over windows     16.43
+  paper H0, mean over windows    12.49
+  paper H1, mean over windows     9.25
+  paper H1, std over windows      8.10
+
+  2. blocks: logistic regression on a block alone / without it (mean of 5 folds)
+                                           L1     L4  AUC L1  AUC L4
+  set                                                               
+  TDA-90 (all 90)                       0.894  0.854   0.971   0.938
+  only paper H0, mean over windows (6)  0.728  0.704   0.840   0.766
+  without paper H0, mean over windows   0.892  0.854   0.969   0.934
+  only paper H0, std over windows (6)   0.738  0.764   0.793   0.857
+  without paper H0, std over windows    0.898  0.836   0.974   0.924
+  only paper H1, mean over windows (8)  0.668  0.552   0.793   0.653
+  without paper H1, mean over windows   0.889  0.851   0.969   0.935
+  only paper H1, std over windows (8)   0.667  0.649   0.768   0.747
+  without paper H1, std over windows    0.892  0.852   0.965   0.934
+  only windowed sublevel H0 (36)        0.863  0.696   0.940   0.761
+  without windowed sublevel H0          0.862  0.846   0.948   0.925
+  only whole-series sublevel H0 (26)    0.787  0.653   0.897   0.724
+  without whole-series sublevel H0      0.880  0.845   0.964   0.930
+
+  3. best single features, level 1 (direction-free AUC)
+     TDA-90:      topo__sub_H0__betti_7 0.894; topo__sub_H0__betti_2 0.868; topo__sub_H0__betti_1 0.826; topo__sub_H0__betti_4 0.800; topo__sub_H0__betti_8 0.758
+     TSFresh-774: data__friedrich_coefficients__coeff_0__m_3__r_30 0.981; data__ratio_beyond_r_sigma__r_0.5 0.955; data__benford_correlation 0.945; data__quantile__q_0.3 0.939; data__quantile__q_0.7 0.935
+
+  3. best single features, level 4 (direction-free AUC)
+     TDA-90:      pwin_H0__carl_f4__std 0.669; win_sub_H0__pers_second__std 0.666; win_sub_H0__pers_q90__std 0.666; pwin_H0__carl_f4__mean 0.662; pwin_H1__W1__std 0.653
+     TSFresh-774: data__kurtosis 0.717; data__ratio_beyond_r_sigma__r_1 0.714; data__range_count__max_1__min_-1 0.714; data__ratio_beyond_r_sigma__r_1.5 0.706; data__mean_n_absolute_max__number_of_maxima_7 0.703

@@ -1,0 +1,1 @@
+H0 rejection at 5%: two.sided=TRUE 0.1679; two.sided=FALSE 0.0993; ratio of p values 2.000

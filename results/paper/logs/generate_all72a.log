@@ -1,0 +1,10 @@
+  stationary: 500 series
+  stochastic_trend: 500 series
+  volatility: 500 series
+  trend: 500 series
+  trend_shift: 500 series
+  mean_shift: 500 series
+  variance_shift: 500 series
+  point_anomaly: 500 series
+  collective_anomaly: 500 series
+all72a: 4500 series, 9 classes -> /home/iguzel/work/tda-nonstationarity/data/paper/raw/all72a.parquet

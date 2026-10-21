@@ -1,0 +1,119 @@
+=== Diagnosis from the out-of-fold scores — exploratory, not in the analysis plan; 36000 series, 72 valid combinations
+
+  exact by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.318  0.418  0.363  0.339  0.320  0.333
+                    independent  0.318  0.410  0.337  0.304  0.281  0.304
+              lr    constrained  0.220  0.267  0.249  0.275  0.306  0.273
+                    independent  0.220  0.229  0.203  0.228  0.251  0.241
+  TSFresh-774 hgb   constrained  0.418  0.514  0.456  0.429  0.366  0.427
+                    independent  0.418  0.512  0.443  0.406  0.327  0.403
+              lr    constrained  0.314  0.356  0.294  0.306  0.294  0.314
+                    independent  0.314  0.352  0.283  0.278  0.251  0.296
+  catch22     hgb   constrained  0.152  0.272  0.281  0.301  0.285  0.225
+                    independent  0.152  0.268  0.267  0.272  0.247  0.211
+              lr    constrained  0.040  0.053  0.116  0.132  0.162  0.129
+                    independent  0.040  0.034  0.067  0.089  0.100  0.110
+
+  hamming by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.902  0.901  0.875  0.854  0.848  0.861
+                    independent  0.901  0.897  0.868  0.848  0.844  0.858
+              lr    constrained  0.864  0.853  0.839  0.834  0.834  0.839
+                    independent  0.863  0.841  0.825  0.823  0.825  0.834
+  TSFresh-774 hgb   constrained  0.920  0.921  0.904  0.885  0.871  0.892
+                    independent  0.919  0.921  0.902  0.882  0.868  0.890
+              lr    constrained  0.896  0.883  0.861  0.846  0.840  0.849
+                    independent  0.895  0.881  0.856  0.839  0.833  0.846
+  catch22     hgb   constrained  0.864  0.869  0.854  0.842  0.833  0.830
+                    independent  0.862  0.866  0.849  0.836  0.827  0.826
+              lr    constrained  0.777  0.762  0.760  0.749  0.742  0.718
+                    independent  0.739  0.728  0.736  0.731  0.729  0.728
+
+  missed by level
+  level                              1      2      3      4      5
+  set         model rule                                          
+  TDA-90      hgb   constrained  0.114  0.151  0.173  0.190  0.190
+                    independent  0.104  0.136  0.155  0.175  0.181
+              lr    constrained  0.163  0.180  0.185  0.201  0.215
+                    independent  0.147  0.156  0.164  0.182  0.199
+  TSFresh-774 hgb   constrained  0.070  0.099  0.133  0.154  0.156
+                    independent  0.069  0.092  0.123  0.142  0.150
+              lr    constrained  0.092  0.132  0.167  0.199  0.214
+                    independent  0.088  0.122  0.153  0.186  0.206
+  catch22     hgb   constrained  0.094  0.130  0.167  0.207  0.236
+                    independent  0.086  0.120  0.151  0.194  0.224
+              lr    constrained  0.277  0.262  0.281  0.310  0.346
+                    independent  0.235  0.220  0.235  0.263  0.287
+
+  invented by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.098  0.097  0.116  0.130  0.114  0.054
+                    independent  0.099  0.103  0.131  0.150  0.138  0.077
+              lr    constrained  0.136  0.145  0.155  0.155  0.130  0.071
+                    independent  0.137  0.161  0.181  0.185  0.167  0.110
+  TSFresh-774 hgb   constrained  0.080  0.080  0.095  0.105  0.103  0.028
+                    independent  0.081  0.081  0.100  0.116  0.122  0.044
+              lr    constrained  0.104  0.120  0.142  0.146  0.121  0.045
+                    independent  0.105  0.124  0.152  0.165  0.148  0.068
+  catch22     hgb   constrained  0.136  0.136  0.151  0.152  0.126  0.059
+                    independent  0.138  0.141  0.162  0.171  0.152  0.091
+              lr    constrained  0.223  0.233  0.232  0.233  0.206  0.176
+                    independent  0.261  0.277  0.279  0.290  0.279  0.248
+
+  count_right by level
+  level                              0      1      2      3      4      5
+  set         model rule                                                 
+  TDA-90      hgb   constrained  0.318  0.462  0.478  0.536  0.533  0.382
+                    independent  0.318  0.450  0.437  0.471  0.486  0.391
+              lr    constrained  0.220  0.332  0.389  0.482  0.546  0.327
+                    independent  0.220  0.288  0.321  0.409  0.477  0.376
+  TSFresh-774 hgb   constrained  0.418  0.537  0.526  0.581  0.547  0.444
+                    independent  0.418  0.534  0.506  0.541  0.495  0.454
+              lr    constrained  0.314  0.394  0.382  0.487  0.494  0.328
+                    independent  0.314  0.388  0.363  0.437  0.459  0.366
+  catch22     hgb   constrained  0.152  0.319  0.385  0.491  0.531  0.248
+                    independent  0.152  0.312  0.363  0.435  0.501  0.303
+              lr    constrained  0.040  0.129  0.305  0.405  0.480  0.166
+                    independent  0.040  0.093  0.194  0.308  0.401  0.398
+
+  stationary or not (non-stationary = any characteristic reported)
+          set model        rule  stationary_recall  nonstationary_recall  balanced
+       TDA-90   hgb independent              0.318                 0.994     0.656
+       TDA-90   hgb constrained              0.318                 0.994     0.656
+       TDA-90    lr independent              0.220                 0.995     0.607
+       TDA-90    lr constrained              0.220                 0.995     0.607
+  TSFresh-774   hgb independent              0.418                 0.995     0.706
+  TSFresh-774   hgb constrained              0.418                 0.995     0.706
+  TSFresh-774    lr independent              0.314                 0.995     0.654
+  TSFresh-774    lr constrained              0.314                 0.995     0.654
+      catch22   hgb independent              0.152                 0.997     0.574
+      catch22   hgb constrained              0.152                 0.997     0.574
+      catch22    lr independent              0.040                 0.999     0.519
+      catch22    lr constrained              0.040                 0.999     0.519
+
+  calibration of the eight probabilities, pooled
+          set model    ECE  Brier
+       TDA-90   hgb 0.0545 0.0935
+       TDA-90    lr 0.0709 0.1144
+  TSFresh-774   hgb 0.0384 0.0733
+  TSFresh-774    lr 0.0543 0.1001
+      catch22   hgb 0.0569 0.1014
+      catch22    lr 0.1155 0.1725
+
+  reliability, TDA-90 hgb: stated -> observed (n)
+    0.02->0.01 (107537)   0.15->0.09 (21085)   0.25->0.16 (19274)   0.35->0.24 (17282)   0.45->0.31 (16220)   0.55->0.40 (15726)   0.65->0.50 (14893)   0.75->0.64 (14129)   0.85->0.81 (13340)   0.97->0.98 (48514)
+
+  reliability, TDA-90 lr: stated -> observed (n)
+    0.02->0.01 (94381)   0.15->0.09 (22442)   0.25->0.16 (19242)   0.35->0.23 (18990)   0.45->0.29 (19412)   0.55->0.38 (19075)   0.65->0.48 (18064)   0.75->0.59 (16470)   0.85->0.75 (16197)   0.97->0.96 (43727)
+
+  example profiles, TDA-90 hgb, constrained decision (probability per characteristic)
+    true R         said RC        (wrong)   S 0.00  V 0.04  T 0.06  R 0.86  M 0.04  Q 0.00  P 0.20  C 0.58
+    true T         said SRC       (wrong)   S 0.68  V 0.27  T 0.47  R 0.65  M 0.12  Q 0.00  P 0.07  C 0.53
+    true SVT       said VTP       (wrong)   S 0.02  V 0.95  T 0.85  R 0.24  M 0.12  Q 0.00  P 0.59  C 0.33
+    true STP       said STP       (right)   S 0.98  V 0.38  T 0.80  R 0.28  M 0.20  Q 0.00  P 0.98  C 0.16
+    true STMC      said SVTMC     (wrong)   S 1.00  V 0.64  T 0.68  R 0.17  M 0.88  Q 0.00  P 0.02  C 0.63
+    true SVMC      said SVTMC     (wrong)   S 0.97  V 0.70  T 0.81  R 0.09  M 0.98  Q 0.00  P 0.05  C 0.97

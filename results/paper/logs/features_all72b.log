@@ -1,0 +1,4 @@
+all72b: 5500 series of length 500
+  tda90      90 features (36s)
+  catch22    22 features (2s)
+  tsfresh   774 features (187s)

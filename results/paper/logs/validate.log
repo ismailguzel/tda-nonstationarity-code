@@ -1,0 +1,8 @@
+betise 0.6.0: ALL_FEATURES_OFF matches FEATURE_ORDER
+  ok   all72a-config.json: 9 classes, 60 series checked
+  ok   all72b-config.json: 11 classes, 96 series checked
+  ok   all72c-config.json: 11 classes, 72 series checked
+  ok   all72d-config.json: 13 classes, 108 series checked
+  ok   all72e-config.json: 13 classes, 120 series checked
+  ok   all72f-config.json: 15 classes, 156 series checked
+all valid
