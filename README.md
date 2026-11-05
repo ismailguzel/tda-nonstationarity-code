@@ -38,6 +38,19 @@ PAPER_PYTHON=$(which python) bash experiments/run_all.sh paper                # 
 python figures/make_figures.py                                               # figures and LaTeX tables
 ```
 
+`run_all.sh` produces the analyses of hypotheses H1-H11. Two later analyses of the paper are
+run separately, on the data of the paper's run in `data/paper/`, and write into
+`results/paper/`:
+
+```bash
+# windowed statistical control WS-24, hypotheses H12-H15 -> results/paper/ws24/ (about 2 hours)
+for step in features detectors stats; do python experiments/checks/ws24_2026-11-05.py $step; done
+# TSFresh without its three non-invariant columns -> results/paper/sensitivity_tsfresh771/
+python experiments/checks/tsfresh_leak_scan_2026-10-22.py
+for step in main complementarity budget; do python experiments/checks/tsfresh771_sensitivity_2026-10-22.py $step; done
+python experiments/checks/tsfresh771_compare_2026-10-22.py
+```
+
 The full run takes about 10 hours on 12 cores, most of it MiniRocket. Data go to
 `data/<tag>/`, outputs to `runs/<tag>/` (both git-ignored); `results/paper/` is the output
 of the paper's run. Each run writes a manifest (commit, versions, host, times), the full
