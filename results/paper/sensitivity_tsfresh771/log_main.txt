@@ -1,0 +1,19 @@
+  TSFresh-774: dropped 3, 771 columns
+36000 series, 72 classes, parts ['all72a', 'all72b', 'all72c', 'all72d', 'all72e', 'all72f']; TSFresh-774 771
+  fold 1/5 TSFresh-774 lr (47s)
+  fold 1/5 TSFresh-774 hgb (553s)
+  fold 1/5 done (600s)
+  fold 2/5 TSFresh-774 lr (47s)
+  fold 2/5 TSFresh-774 hgb (554s)
+  fold 2/5 done (1201s)
+  fold 3/5 TSFresh-774 lr (48s)
+  fold 3/5 TSFresh-774 hgb (556s)
+  fold 3/5 done (1804s)
+  fold 4/5 TSFresh-774 lr (48s)
+  fold 4/5 TSFresh-774 hgb (557s)
+  fold 4/5 done (2409s)
+  fold 5/5 TSFresh-774 lr (47s)
+  fold 5/5 TSFresh-774 hgb (554s)
+  fold 5/5 done (3011s)
+Saved -> main (3011s)
+main done in 3012s

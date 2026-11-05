@@ -329,7 +329,8 @@ def fig4() -> None:
 # ------------------------------------------------------------------------ Figure 5 ---
 def fig5() -> None:
     """Per detector at level 4, balanced accuracy: TDA-90 - TSFresh-774 (T4, H4), gain from
-    adding TDA-90 (T9, H8), union top-100 - TSFresh top-100 (T13)."""
+    adding TDA-90 (T9, H8), gain from adding TDA-90 to TSFresh-774 + WS-24 (ws24, H15),
+    union top-100 - TSFresh top-100 (T13)."""
     T4 = pd.read_csv(RES / "main" / "tables" / "T4_per_detector_level4_differences.csv").set_index("comparison")
     T9 = pd.read_csv(RES / "complementarity" / "tables" / "T9_gain_per_detector_level4.csv").set_index(["metric", "model"])
     T13 = pd.read_csv(RES / "budget" / "tables" / "T13_per_detector_level4.csv").set_index(["metric", "model"])
@@ -338,10 +339,16 @@ def fig5() -> None:
         rows[(m, "TDA-90 alone\n$-$ TSFresh-774")] = T4.loc[f"TDA-90 ({m}) - TSFresh-774 ({m})"]
         rows[(m, "TSFresh-774 + TDA-90\n$-$ TSFresh-774")] = T9.loc[("bal_acc", m)]
         rows[(m, "union top-100\n$-$ TSFresh top-100")] = T13.loc[("bal_acc", m)]
+    _, W = ws24_results()                       # H15: gain from TDA-90 over TSFresh-774 + WS-24
     V = {k: [parse(r[c]) for c in LETTERS] for k, r in rows.items()}
+    for m in ("lr", "hgb"):
+        V[(m, "TDA-90 added to\nTSFresh-774 + WS-24")] = [W[("H15", c, m, "bal_acc")] for c in LETTERS]
+    order = ["TDA-90 alone\n$-$ TSFresh-774", "TSFresh-774 + TDA-90\n$-$ TSFresh-774",
+             "TDA-90 added to\nTSFresh-774 + WS-24", "union top-100\n$-$ TSFresh top-100"]
+    V = {(m, o): V[(m, o)] for m in ("lr", "hgb") for o in order}
     vmax = max(abs(x[0]) for v in V.values() for x in v)
     vmax = np.ceil(vmax * 100) / 100
-    fig, axes = plt.subplots(2, 1, figsize=(6.4, 4.4), gridspec_kw={"hspace": 0.38})
+    fig, axes = plt.subplots(2, 1, figsize=(6.4, 5.5), gridspec_kw={"hspace": 0.32})
     cmap = diverging_tda_tsfresh()
     for ax, m in zip(axes, ("lr", "hgb")):
         keys = [k for k in V if k[0] == m]
@@ -362,7 +369,7 @@ def fig5() -> None:
             sp.set_visible(False)
         ax.set_title({"lr": "Logistic regression", "hgb": "Gradient boosting"}[m])
     cb = fig.colorbar(im, ax=axes, fraction=0.03, pad=0.02)
-    cb.set_label("Difference in balanced accuracy, level 4\n(blue: topological side ahead; orange: TSFresh-774 ahead)", fontsize=7.5)
+    cb.set_label("Difference in balanced accuracy, level 4\n(blue: side with topological features ahead; orange: other side ahead)", fontsize=7.5)
     cb.ax.tick_params(labelsize=7)
     save(fig, "fig5_per_cause")
 
@@ -459,14 +466,14 @@ def tableA1() -> None:
               for v, se, p in cells.values()]
         return f"{sum(ok)} of {len(ok)}"
     lines = [r"\begin{table}[p]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{3pt}",
-             r"\caption{Every hypothesis of the analysis plan, its tests and their outcome. Differences at "
+             r"\caption{Every hypothesis, its tests and their outcome. Differences at "
              r"the classifier and measure of the column; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 "
-             r"folds. Expected: the outcome the plan registered (``$>0$'': topology ahead; ``$<0$'': "
-             r"TSFresh-774 ahead; ``n.s.'': no significant difference; ``---'': no direction registered). "
-             r"As expected: number of tests whose outcome matched the registered expectation. Per-detector differences of H4 were "
-             r"registered in balanced accuracy only. H11 is descriptive: shares of selected features, mean over folds, without a test.}",
+             r"folds. Expected: the hypothesised outcome (``$>0$'': topology ahead; ``$<0$'': "
+             r"TSFresh-774 ahead; ``n.s.'': no significant difference; ``---'': no expected direction). "
+             r"As expected: number of tests whose outcome matched the expected one. Per-detector differences of H4 were "
+             r"tested in balanced accuracy only. H11 is descriptive: shares of selected features, mean over folds, without a test. H12--H15: windowed statistical control (Table~\ref{tab:ws24}); H14 and H15 are descriptive.}",
              r"\label{tab:hypotheses}",
-             r"\begin{tabular}{l p{5.2cm} cccc c c}", r"\toprule",
+             r"\begin{tabular}{l >{\raggedright\arraybackslash}p{6.2cm} cccc c c}", r"\toprule",
              r"& & \multicolumn{2}{c}{Balanced accuracy} & \multicolumn{2}{c}{AUC} & & \\",
              r"\cmidrule(lr){3-4} \cmidrule(lr){5-6}",
              r"Hyp. & Test & LR & HGB & LR & HGB & Expected & As expected \\", r"\midrule"]
@@ -484,12 +491,114 @@ def tableA1() -> None:
               r"H11 & Share of TDA-90 in union top-100 (pool share 10.4\,\%) & \multicolumn{4}{>{\raggedright\arraybackslash}p{5.0cm}}{"
               + ", ".join(f"{c} {share[c]:.2f}" for c in LETTERS) + r"} & V highest & "
               + ("yes" if rank_v == 1 else f"no (V {rank_v}rd)" if rank_v == 3 else f"no (V rank {rank_v})") + r" \\",
-              r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+              ]
+    _, W = ws24_results()
+    rows_ws = [("H12", r"Gain from TDA-90 added to TSFresh-774 + WS-24, level~4", {(m, k): W[("H12", "L4", m, k)] for m, k in COLS}, ">0"),
+               ("H13", r"Level~4, TSFresh-774 + TDA-90 $-$ TSFresh-774 + WS-24", {(m, k): W[("H13", "L4", m, k)] for m, k in COLS}, ">0"),
+               ("H14", r"Level~1, TDA-90 $-$ WS-24", {(m, k): W[("H14", "L1", m, k)] for m, k in COLS}, "desc"),
+               ("H14", r"Level~4, TDA-90 $-$ WS-24", {(m, k): W[("H14", "L4", m, k)] for m, k in COLS}, "desc"),
+               ("H14", r"Drop difference, TDA-90 $-$ WS-24", {(m, k): W[("H14", "drop", m, k)] for m, k in COLS}, "desc"),
+               ("H15", r"Detector V, gain as in H12, level~4", {(m, k): W[("H15", "V", m, k)] for m, k in COLS}, "desc"),
+               ("H15", r"Detector M, gain as in H12, level~4", {(m, k): W[("H15", "M", m, k)] for m, k in COLS}, "desc")]
+    last = "H11"
+    for h, lab, cells, e in rows_ws:
+        if h != last:
+            lines.append(r"\addlinespace")
+        vals = [_cell(*cells[c]) for c in COLS]
+        exp = {">0": "$>0$", "desc": "---"}[e]
+        lines.append(" & ".join([h if h != last else "", lab] + vals + [exp, verdict(cells, e)]) + r" \\")
+        last = h
+    rows += rows_ws
+    lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
     (TAB / "tableA1_hypotheses.tex").write_text(fit_width("\n".join(lines) + "\n"))
     print("  -> paper/tables/tableA1_hypotheses.tex")
     for h, lab, cells, e in rows:
         print(f"    {h:4s} {verdict(cells, e):7s} {lab}")
 
+
+
+# ----------------------------------------------------- addendum v4: WS-24 control ---
+WS_ORDER = ["WS-24", "TDA-90", "TSFresh-774+WS-24", "TSFresh-774+TDA-90", "TSFresh-774+WS-24+TDA-90"]
+
+
+def _nb(delta) -> tuple:
+    """Nadeau-Bengio corrected test over five folds (n_test/n_train = 1/4), two-sided, df 4."""
+    from scipy import stats as st
+    d = np.asarray(delta, float)
+    se = np.sqrt((1 / len(d) + 1 / 4) * d.var(ddof=1))
+    t = d.mean() / se if se > 0 else np.inf * np.sign(d.mean())
+    return float(d.mean()), float(se), float(2 * st.t.sf(abs(t), len(d) - 1))
+
+
+def ws24_results() -> tuple:
+    """Set means and H12-H15 tests recomputed from the committed fold scores
+    (ws24/, main/, complementarity/ folds.csv) and checked against ws24/stats.txt."""
+    F = pd.concat([pd.read_csv(RES / "ws24" / "folds.csv"),
+                   pd.read_csv(RES / "main" / "folds.csv").query("set in ['TDA-90', 'TSFresh-774']"),
+                   pd.read_csv(RES / "complementarity" / "folds.csv").query("set == 'TSFresh-774+TDA-90'")])
+    means, tests = {}, {}
+    for k in ("bal_acc", "auc"):
+        M = mean_of_eight(F, k)
+        v = lambda s_, m, l: M.xs((s_, m, l), level=["set", "model", "level"]).sort_index().to_numpy()
+        P = F[F.level == 4].set_index(["set", "model", "char", "fold"])[k]
+        for m in ("lr", "hgb"):
+            for s_ in WS_ORDER:
+                for l in (1, 4):
+                    x = v(s_, m, l); means[(s_, m, k, l)] = (x.mean(), np.sqrt((1 / 5 + 1 / 4) * x.var(ddof=1)))
+            a, b, c = "TSFresh-774+WS-24+TDA-90", "TSFresh-774+WS-24", "TSFresh-774+TDA-90"
+            for l in (1, 4):
+                tests[("H12", f"L{l}", m, k)] = _nb(v(a, m, l) - v(b, m, l))
+                tests[("H14", f"L{l}", m, k)] = _nb(v("TDA-90", m, l) - v("WS-24", m, l))
+            tests[("H12", "L4-L1", m, k)] = _nb((v(a, m, 4) - v(b, m, 4)) - (v(a, m, 1) - v(b, m, 1)))
+            tests[("H13", "L4", m, k)] = _nb(v(c, m, 4) - v(b, m, 4))
+            tests[("H14", "drop", m, k)] = _nb((v("TDA-90", m, 4) - v("TDA-90", m, 1)) - (v("WS-24", m, 4) - v("WS-24", m, 1)))
+            for ch in LETTERS:
+                g = lambda s_: P.xs((s_, m, ch), level=["set", "model", "char"]).sort_index().to_numpy()
+                tests[("H15", ch, m, k)] = _nb(g(a) - g(b))
+    # check against the committed stats.txt (three decimals)
+    txt = (RES / "ws24" / "stats.txt").read_text()
+    blocks = dict(zip(["bal_acc", "auc"], txt.split("=== auc ===")))
+    for (h, what, m, k), (d, se, p) in tests.items():
+        lab = {"H12": f"T15 H12 {m}:", "H13": f"T16 H13 {m}:", "H14": f"T17 H14 {m}:", "H15": f"T18 H15 {m}:"}[h]
+        line = next(L for L in blocks[k].splitlines() if L.startswith(lab))
+        key = {"drop": "drop diff"}.get(what, what)
+        if h == "H13":
+            key = "(TSFresh-774+WS-24)"
+        mm = re.search(re.escape(key) + r" ([+\-]\d\.\d{3}) \((\d\.\d{3})\) p=(\d\.\d{3})", line)
+        assert mm, (h, what, m, k)
+        assert abs(float(mm.group(1)) - d) < 6e-4 and abs(float(mm.group(2)) - se) < 6e-4 and abs(float(mm.group(3)) - p) < 6e-4, (h, what, m, k, mm.groups(), d, se, p)
+    return means, tests
+
+
+def tablews24() -> None:
+    """Main-text table of addendum v4 (balanced accuracy)."""
+    means, tests = ws24_results()
+    def ts(h, w, m):
+        d, se, p = tests[(h, w, m, "bal_acc")]
+        return f"{fs(d)} ({fse(se)})" + star(p)
+    lab = {"WS-24": "WS-24", "TDA-90": "TDA-90", "TSFresh-774+WS-24": "TSFresh-774 + WS-24",
+           "TSFresh-774+TDA-90": "TSFresh-774 + TDA-90", "TSFresh-774+WS-24+TDA-90": "TSFresh-774 + WS-24 + TDA-90"}
+    ses = [means[(s_, m, "bal_acc", l)][1] for s_ in WS_ORDER for m in ("lr", "hgb") for l in (1, 4)]
+    lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{4pt}",
+             r"\caption{Windowed statistical control: mean balanced accuracy of the eight detectors with one cause (L1) "
+             r"and four (L4) for WS-24, statistics of the nine TDA-90 windows (Section~\ref{sec:features-combined}), "
+             r"alone and combined, with TDA-90 and TSFresh-774 + TDA-90 for reference. $\Delta$: differences between sets, "
+             r"corrected standard errors in parentheses; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds. "
+             rf"Corrected standard errors of the means are at most {max(ses):.3f}. AUC: Table~\ref{{tab:hypotheses}}.}}",
+             r"\label{tab:ws24}", r"\begin{tabular}{l cc cc}", r"\toprule",
+             r"& \multicolumn{2}{c}{Logistic regression} & \multicolumn{2}{c}{Gradient boosting} \\",
+             r"\cmidrule(lr){2-3} \cmidrule(l){4-5}", r"Features & L1 & L4 & L1 & L4 \\", r"\midrule"]
+    for s_ in WS_ORDER:
+        lines.append(" & ".join([lab[s_]] + [f"{means[(s_, m, 'bal_acc', l)][0]:.3f}" for m in ("lr", "hgb") for l in (1, 4)]) + r" \\")
+    lines.append(r"\midrule")
+    lines.append(r"$\Delta$ adding TDA-90 to TSFresh-774 + WS-24 (H12) & " + " & ".join(ts("H12", f"L{l}", m) for m in ("lr", "hgb") for l in (1, 4)) + r" \\")
+    lines.append(r"$\Delta$ TSFresh-774 + TDA-90 $-$ TSFresh-774 + WS-24 (H13) & & " + ts("H13", "L4", "lr") + " & & " + ts("H13", "L4", "hgb") + r" \\")
+    lines.append(r"$\Delta$ TDA-90 $-$ WS-24 (H14) & " + " & ".join(ts("H14", f"L{l}", m) for m in ("lr", "hgb") for l in (1, 4)) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
+    (TAB / "table_ws24.tex").write_text(fit_width("\n".join(lines) + "\n")); print("  -> paper/tables/table_ws24.tex")
+    for k_, v_ in tests.items():
+        if k_[3] == "bal_acc":
+            print("   ", k_, tuple(round(x, 3) for x in v_))
 
 # ------------------------------------------------------------------------ Table A2 ---
 def tableA2() -> None:
@@ -528,49 +637,60 @@ def _v(cell):
     v, se, p = parse(cell); return f"{fs(v)}{star(p)}"
 
 
+def _vse(cell):
+    """Value, corrected standard error in parentheses and stars, as in the appendix tables."""
+    v, se, p = parse(cell)
+    return f"{fs(v)} ({fse(se)})" + (star(p) if p is not None else "")
+
+
 def table2c() -> None:
     T1 = pd.read_csv(RES / "main" / "tables" / "T1_T2_mean_of_eight_bal_acc.csv").set_index(["set", "model"])
     T23 = pd.read_csv(RES / "main" / "tables" / "T2_T3_differences_bal_acc.csv").set_index("comparison")
-    lines = [r"\begin{table}[t]", r"\centering", r"\small",
+    lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{3pt}",
              r"\caption{Mean balanced accuracy of the eight detectors with one cause (L1) and with four "
              r"(L4), and its change (drop, L4 $-$ L1). The last two columns give TDA-90 minus the set of the row, "
              r"under the same classifier (for MiniRocket: TDA-90 under LR and under HGB, one line each); a positive $\Delta$drop "
-             r"means that TDA-90 loses less. Registered comparisons H1--H3 (Table~\ref{tab:hypotheses}). $^{*}p<0.05$, $^{**}p<0.01$. Levels 2--3, standard errors, "
+             r"means that TDA-90 loses less. Hypotheses H1--H3 (Table~\ref{tab:hypotheses}). Corrected standard errors in parentheses; "
+             r"$^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds. SESEPLACEHOLDER Levels 2--3, "
              r"$p$ values and AUC: Figure~\ref{fig:levels}a,b and Table~\ref{tab:levels-full}.}",
              r"\label{tab:levels-results}",
              r"\begin{tabular}{ll ccc cc}", r"\toprule",
              r"& & & & & \multicolumn{2}{c}{TDA-90 $-$ row} \\ \cmidrule(l){6-7}",
              r"Set & Classifier & L1 & L4 & Drop & $\Delta$drop & $\Delta$L4 \\", r"\midrule"]
+    ses = []
     for i, (s_, m) in enumerate(ORDER2):
         r = T1.loc[(s_, m)]
-        cells = [s_, CLF[m], f"{parse(r['L1'])[0]:.3f}", f"{parse(r['L4'])[0]:.3f}", fs(parse(r["drop L1->L4"])[0])]
+        ses += [parse(r["L1"])[1], parse(r["L4"])[1]]
+        cells = [s_, CLF[m], f"{parse(r['L1'])[0]:.3f}", f"{parse(r['L4'])[0]:.3f}", _vse(r["drop L1->L4"])]
         if s_ == "TDA-90":
             cells += ["---", "---"]
         elif s_ == "MiniRocket":           # one row per TDA-90 classifier it is compared with
             for k, tm in enumerate(("lr", "hgb")):
                 x = T23.loc[f"TDA-90 ({tm}) - MiniRocket (ridge)"]
-                row = (cells if k == 0 else ["", "", "", "", ""]) + [_v(x["drop difference"]) + f" ({CLF[tm]})",
-                                                                     _v(x["level 4"]) + f" ({CLF[tm]})"]
+                row = (cells if k == 0 else ["", "", "", "", ""]) + [_vse(x["drop difference"]) + f" ({CLF[tm]})",
+                                                                     _vse(x["level 4"]) + f" ({CLF[tm]})"]
                 if k == 0 and i in (3, 6):
                     lines.append(r"\addlinespace")
                 lines.append(" & ".join(row) + r" \\")
             continue
         else:
             c = T23.loc[f"TDA-90 ({m}) - {s_} ({m})"]
-            cells += [_v(c["drop difference"]), _v(c["level 4"])]
+            cells += [_vse(c["drop difference"]), _vse(c["level 4"])]
         if i in (3, 6):
             lines.append(r"\addlinespace")
         lines.append(" & ".join(cells) + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
-    (TAB / "table2_levels.tex").write_text("\n".join(lines) + "\n"); print("  -> paper/tables/table2_levels.tex")
+    txt = "\n".join(lines) + "\n"
+    txt = txt.replace("SESEPLACEHOLDER", f"Corrected standard errors of L1 and L4 are at most {max(ses):.3f}.")
+    (TAB / "table2_levels.tex").write_text(txt); print("  -> paper/tables/table2_levels.tex")
 
 
 def table3c() -> None:
     T = pd.read_csv(RES / "complementarity" / "tables" / "T7_T8_gains_bal_acc.csv").set_index(["model", "added"])
-    lines = [r"\begin{table}[t]", r"\centering", r"\small",
+    lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{4pt}",
              r"\caption{Gain in mean balanced accuracy from adding TDA-90, or catch22 as a control, to "
-             r"TSFresh-774, with one cause (L1) and four (L4), and the change of the gain. $^{*}p<0.05$, "
-             r"$^{**}p<0.01$. All levels, standard errors, $p$ values and AUC: Figure~\ref{fig:levels}c,d "
+             r"TSFresh-774, with one cause (L1) and four (L4), and the change of the gain. Corrected standard errors "
+             r"in parentheses; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds. All levels, $p$ values and AUC: Figure~\ref{fig:levels}c,d "
              r"and Table~\ref{tab:complement-full}.}",
              r"\label{tab:complement}",
              r"\begin{tabular}{ll ccc}", r"\toprule",
@@ -578,7 +698,7 @@ def table3c() -> None:
     for m in ("lr", "hgb"):
         for a, lab in (("TDA-90", "TDA-90 (H5, H6)"), ("catch22", "catch22"), ("TDA-90 minus catch22", r"TDA-90 $-$ catch22 (H7)")):
             r = T.loc[(m, a)]
-            cells = [CLF[m] if a == "TDA-90" else "", lab] + ["" if pd.isna(r[c]) else _v(r[c]) for c in ("gain L1", "gain L4", "gain L4 - gain L1")]
+            cells = [CLF[m] if a == "TDA-90" else "", lab] + ["" if pd.isna(r[c]) else _vse(r[c]) for c in ("gain L1", "gain L4", "gain L4 - gain L1")]
             lines.append(" & ".join(cells) + r" \\")
         if m == "lr":
             lines.append(r"\addlinespace")
@@ -589,10 +709,11 @@ def table3c() -> None:
 def table4c() -> None:
     T10 = pd.read_csv(RES / "budget" / "tables" / "T10_mean_of_eight_bal_acc.csv").set_index(["model", "set"])
     T11 = pd.read_csv(RES / "budget" / "tables" / "T11_union_minus_tsfresh_bal_acc.csv").set_index("model")
-    lines = [r"\begin{table}[t]", r"\centering", r"\small",
+    lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize", r"\setlength{\tabcolsep}{4pt}",
              r"\caption{Mean balanced accuracy at an equal budget of 100 features selected by mutual "
-             r"information, with the full sets for reference. $\Delta$: union top-100 minus TSFresh top-100; "
-             r"$^{*}p<0.05$, $^{**}p<0.01$. All levels, standard errors, $p$ values and AUC: "
+             r"information, with the full sets for reference. $\Delta$: union top-100 minus TSFresh top-100, "
+             r"corrected standard errors in parentheses; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds. "
+             r"SESEPLACEHOLDER All levels, $p$ values and AUC: "
              r"Table~\ref{tab:budget-full}.}",
              r"\label{tab:budget}",
              r"\begin{tabular}{l cc cc}", r"\toprule",
@@ -603,10 +724,13 @@ def table4c() -> None:
         cells = [lab] + [f"{parse(T10.loc[(m, st)][f'L{k}'])[0]:.3f}" for m in ("lr", "hgb") for k in (1, 4)]
         lines.append(" & ".join(cells) + r" \\")
     lines.append(r"\midrule")
-    lines.append(" & ".join([r"$\Delta$ (H9)"] + [_v(T11.loc[m][f"L{k}"]) for m in ("lr", "hgb") for k in (1, 4)]) + r" \\")
-    lines.append(" & ".join([r"$\Delta$ L4 $-$ L1 (H10)", "", _v(T11.loc["lr"]["L4 - L1"]), "", _v(T11.loc["hgb"]["L4 - L1"])]) + r" \\")
+    lines.append(" & ".join([r"$\Delta$ (H9)"] + [_vse(T11.loc[m][f"L{k}"]) for m in ("lr", "hgb") for k in (1, 4)]) + r" \\")
+    lines.append(" & ".join([r"$\Delta$ L4 $-$ L1 (H10)", "", _vse(T11.loc["lr"]["L4 - L1"]), "", _vse(T11.loc["hgb"]["L4 - L1"])]) + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
-    (TAB / "table4_budget.tex").write_text("\n".join(lines) + "\n"); print("  -> paper/tables/table4_budget.tex")
+    ses = [parse(T10.loc[(m, st)][f"L{k}"])[1] for st, _ in ORDER4 for m in ("lr", "hgb") for k in (1, 4)]
+    txt = "\n".join(lines) + "\n"
+    txt = txt.replace("SESEPLACEHOLDER", f"Corrected standard errors of the set means are at most {max(ses):.3f}.")
+    (TAB / "table4_budget.tex").write_text(txt); print("  -> paper/tables/table4_budget.tex")
 
 
 # ------------------------------------------------------------------------ Figure 1 ---
@@ -658,7 +782,7 @@ def fig1() -> None:
     # (d) the summary in every window -> mean and std over windows, for both series
     ax = fig.add_subplot(gs[1, 2])
     x = np.arange(1, len(W) + 1)
-    for v, col, lab in ((w1s, CS, "stationary series"), (w1v, CV, "volatility series")):
+    for v, col, lab in ((w1s, CS, "stationary class"), (w1v, CV, "volatility series")):
         ax.plot(x, v, marker="o", ms=3, color=col, lw=1.2, zorder=3)
         ax.text(9.4, v.mean() + (4.0 if lab.startswith("stationary") else -5.0),
                 f"{lab}\nmean {v.mean():.1f}\nstd {v.std():.1f}", color=col, fontsize=6, va="center")
@@ -707,7 +831,7 @@ def tableA6() -> None:
          f"start at {iv(G['collective_anomaly']['position'])}"),
     ]
     lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
-             r"\caption{Generator settings (betise~0.6.0 defaults; series of length 500). Rule: how each "
+             r"\caption{Generator settings (BeTiSe~0.6.0 defaults; series of length 500). Rule: how each "
              r"cause is drawn. Realised: 5th--95th percentiles across series with the cause, taken "
              r"from the series metadata. Positions are fractions of the series length. $u$ and $s$ are "
              r"independent uniform draws; sd is a standard deviation of the series at the stage the "
@@ -782,7 +906,8 @@ def table7() -> None:
              r"\caption{Exploratory. Proportion of the 500 series in each single-cause class and in the "
              r"stationary class flagged by each classical test at the 5\,\% level. Diagonal cells (bold): "
              r"the power of a test against its own cause; other cells: its response to causes it does not "
-             r"target. Trend-shift series contain a linear trend by construction (Section~\ref{sec:data-causes}).}",
+             r"target. For ADF, a series is flagged when the unit-root null is not rejected, so its stationary-row value is not a size. "
+             r"Trend-shift series contain a linear trend by construction (Section~\ref{sec:data-causes}).}",
              r"\label{tab:tests-cross}",
              r"\begin{adjustbox}{max width=\textwidth}",
              r"\begin{tabular}{l ccccccc}", r"\toprule",
@@ -856,7 +981,7 @@ def fig23() -> None:
     save(fig, "fig3_levels_gain")
 
 
-JOBS = {"fig1": fig1, "fig23": fig23, "table7": table7, "table6": table6, "tableA6": tableA6, "table2c": table2c, "table3c": table3c, "table4c": table4c, "tableA1": tableA1, "tableA2": tableA2, "fig5": fig5, "table5": table5, "table4": table4, "fig4": fig4, "table1": table1, "table2": table2, "table3": table3}
+JOBS = {"fig1": fig1, "fig23": fig23, "table7": table7, "table6": table6, "tableA6": tableA6, "table2c": table2c, "table3c": table3c, "table4c": table4c, "tableA1": tableA1, "tablews24": tablews24, "tableA2": tableA2, "fig5": fig5, "table5": table5, "table4": table4, "fig4": fig4, "table1": table1, "table2": table2, "table3": table3}
 
 if __name__ == "__main__":
     style()

@@ -1,0 +1,18 @@
+# munchlab job 3d960e78, env tdans, repo 63483c8, data/paper (read-only)
+parts ['all72a', 'all72b', 'all72c', 'all72d', 'all72e', 'all72f']; TSFresh columns common to all parts: 774
+invariance sample: 300 series, 3 extractions (29s)
+
+Columns not invariant to level/scale of the raw series, or non-finite: 3
+                                                         frac_changed_x1000  frac_changed_x0.001  nonfinite_rate_sample
+data__variation_coefficient                                        0.853333             0.996667               0.213333
+data__fft_coefficient__attr_"angle"__coeff_0                       0.440000             0.463333               0.000000
+data__query_similarity_count__query_None__threshold_0.0            0.000000             0.000000               1.000000
+
+Stored features (36 000 series): single-feature AUC by cause and by part, Spearman with raw scale
+                                                         n_distinct            sd  AUC_S  AUC_V  AUC_T  AUC_R  AUC_M  AUC_Q  AUC_P  AUC_C  AUC_part_max  rho_lograwsd  rho_rawmean_over_sd
+column                                                                                                                                                                                    
+data__fft_coefficient__attr_"angle"__coeff_0                      2  8.997700e+01  0.512  0.504  0.505  0.502  0.506  0.501  0.501  0.500         0.512         0.021                0.024
+data__query_similarity_count__query_None__threshold_0.0           1  0.000000e+00  0.500  0.500  0.500  0.500  0.500  0.500  0.500  0.500         0.500           NaN                  NaN
+data__variation_coefficient                                    1521  7.560236e+16  0.523  0.503  0.504  0.502  0.502  0.503  0.503  0.503         0.534        -0.019                0.001
+
+Reference: part-AUC (part all72a) of 40 random unflagged columns: median 0.507, max 0.802

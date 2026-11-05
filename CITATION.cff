@@ -8,7 +8,7 @@ authors:
   - family-names: "Yozgatlıgil"
     given-names: "Ceylan"
     orcid: "https://orcid.org/0000-0003-3492-0510"
-version: "1.0"
+version: "1.1"
 license: MIT
 repository-code: "https://github.com/ismailguzel/tda-nonstationarity-code"
 keywords:
