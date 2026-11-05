@@ -3,7 +3,7 @@
 Code, data pipeline, run logs and results of the paper
 
 > İ. Güzel and C. Yozgatlıgil, *Diagnosing the causes of non-stationarity with topological
-> feature engineering*, submitted to the Hacettepe Journal of Mathematics and Statistics.
+> feature engineering*, submitted.
 
 The paper casts the diagnosis of non-stationarity as multi-label detection — one binary
 detector per cause: stochastic trend, volatility, linear trend, trend shift, mean shift,

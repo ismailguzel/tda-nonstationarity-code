@@ -1,2 +1,2 @@
-Exported on 2026-11-05 from commit 2b169f8a989bc400ede865e7fe5ce57c175b7b62 (v1.1-readme) of the authors' working
+Exported on 2026-11-05 from commit 60f58042437fa71a62f85a12825a6f96f47fb3ba (v1.1-readme2) of the authors' working
 repository. This repository is generated; it is not edited directly.
