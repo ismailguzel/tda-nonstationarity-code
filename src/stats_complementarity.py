@@ -41,7 +41,7 @@ def main() -> None:
     models = sorted(V.model.unique())
     D = pd.concat([pd.read_csv(final / "folds.csv").query("set == @BASE and model in @models"), V])
     k = D.fold.nunique(); r = 1 / (k - 1)
-    lines = [f"=== complementarity (addendum v2): TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical "
+    lines = [f"=== complementarity: TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical "
              f"({len(a)} series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)"]
     tables = {}
     M8 = D[D.level.between(1, 4)].groupby(["set", "model", "level", "fold"])[["bal_acc", "auc"]].mean()

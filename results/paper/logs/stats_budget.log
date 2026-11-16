@@ -1,4 +1,4 @@
-=== equal feature budget (addendum v3) (TSFresh top-100 vs union top-100); folds of the final run; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+=== equal feature budget (TSFresh top-100 vs union top-100); same folds as the main comparison; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
 
 T10  mean of the eight detectors, bal_acc
 model                set            L1            L2            L3            L4

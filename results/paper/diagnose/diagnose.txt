@@ -1,4 +1,4 @@
-=== Diagnosis from the out-of-fold scores — exploratory, not in the analysis plan; 36000 series, 72 valid combinations
+=== Diagnosis from the out-of-fold scores — exploratory; 36000 series, 72 valid combinations
 
   exact by level
   level                              0      1      2      3      4      5

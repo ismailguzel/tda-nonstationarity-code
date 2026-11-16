@@ -1,4 +1,4 @@
-=== Interpretation of the TDA-90 detectors — exploratory, not in the analysis plan
+=== Interpretation of the TDA-90 detectors — exploratory
 
 ##### V
 

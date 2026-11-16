@@ -427,8 +427,8 @@ def _cell(v, se, pv):
 def tableA1() -> None:
     """Every hypothesis of the paper (Appendix B), its tests and their outcome. The
     outcome is computed here from the committed tables: a directional hypothesis is supported
-    in a test if the difference has the expected sign and p < 0.05; H2 expects no significant
-    difference."""
+    in a test if the difference has the expected sign and p < 0.05. H2 retains its
+    original expectation, but non-significance is not counted as support for equivalence."""
     R = {}
     for metric in ("bal_acc", "auc"):
         R[("T23", metric)] = pd.read_csv(RES / "main" / "tables" / f"T2_T3_differences_{metric}.csv").set_index("comparison")
@@ -462,6 +462,8 @@ def tableA1() -> None:
     def verdict(cells, e):
         if e == "desc":
             return ""
+        if e == "ns":
+            return "---"
         ok = [(v > 0 and p < 0.05) if e == ">0" else (v < 0 and p < 0.05) if e == "<0" else (p >= 0.05)
               for v, se, p in cells.values()]
         return f"{sum(ok)} of {len(ok)}"
@@ -470,7 +472,7 @@ def tableA1() -> None:
              r"the classifier and measure of the column; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 "
              r"folds. Expected: the hypothesised outcome (``$>0$'': topology ahead; ``$<0$'': "
              r"TSFresh-774 ahead; ``n.s.'': no significant difference; ``---'': no expected direction). "
-             r"As expected: number of tests whose outcome matched the expected one. Per-detector differences of H4 were "
+             r"As expected: number of tests whose outcome matched the expected one. For H2, we report the original expectation but omit this count because non-significance does not establish equivalence. Per-detector differences of H4 were "
              r"tested in balanced accuracy only. H11 is descriptive: shares of selected features, mean over folds, without a test. H12--H15: windowed statistical control (Table~\ref{tab:ws24}); H14 and H15 are descriptive.}",
              r"\label{tab:hypotheses}",
              r"\begin{tabular}{l >{\raggedright\arraybackslash}p{6.2cm} cccc c c}", r"\toprule",
@@ -517,7 +519,7 @@ def tableA1() -> None:
 
 
 
-# ----------------------------------------------------- addendum v4: WS-24 control ---
+# ------------------------------------------------------------ WS-24 control ---
 WS_ORDER = ["WS-24", "TDA-90", "TSFresh-774+WS-24", "TSFresh-774+TDA-90", "TSFresh-774+WS-24+TDA-90"]
 
 
@@ -543,11 +545,12 @@ def ws24_results() -> tuple:
         P = F[F.level == 4].set_index(["set", "model", "char", "fold"])[k]
         for m in ("lr", "hgb"):
             for s_ in WS_ORDER:
-                for l in (1, 4):
+                for l in (1, 2, 3, 4):
                     x = v(s_, m, l); means[(s_, m, k, l)] = (x.mean(), np.sqrt((1 / 5 + 1 / 4) * x.var(ddof=1)))
             a, b, c = "TSFresh-774+WS-24+TDA-90", "TSFresh-774+WS-24", "TSFresh-774+TDA-90"
-            for l in (1, 4):
+            for l in (1, 2, 3, 4):
                 tests[("H12", f"L{l}", m, k)] = _nb(v(a, m, l) - v(b, m, l))
+            for l in (1, 4):
                 tests[("H14", f"L{l}", m, k)] = _nb(v("TDA-90", m, l) - v("WS-24", m, l))
             tests[("H12", "L4-L1", m, k)] = _nb((v(a, m, 4) - v(b, m, 4)) - (v(a, m, 1) - v(b, m, 1)))
             tests[("H13", "L4", m, k)] = _nb(v(c, m, 4) - v(b, m, 4))
@@ -555,6 +558,12 @@ def ws24_results() -> tuple:
             for ch in LETTERS:
                 g = lambda s_: P.xs((s_, m, ch), level=["set", "model", "char"]).sort_index().to_numpy()
                 tests[("H15", ch, m, k)] = _nb(g(a) - g(b))
+    for k in ("bal_acc", "auc"):                  # means against the committed T14 tables
+        T14 = pd.read_csv(RES / "ws24" / f"T14_mean_of_eight_{k}.csv").set_index(["model", "set"])
+        for (s_, m, kk, l), (mu, se) in means.items():
+            if kk == k:
+                v0, se0, _ = parse(T14.loc[(m, s_), f"L{l}"])
+                assert abs(v0 - mu) < 6e-4 and abs(se0 - se) < 6e-4, (s_, m, k, l)
     # check against the committed stats.txt (three decimals)
     txt = (RES / "ws24" / "stats.txt").read_text()
     blocks = dict(zip(["bal_acc", "auc"], txt.split("=== auc ===")))
@@ -571,7 +580,7 @@ def ws24_results() -> tuple:
 
 
 def tablews24() -> None:
-    """Main-text table of addendum v4 (balanced accuracy)."""
+    """Main-text table of the WS-24 control (balanced accuracy)."""
     means, tests = ws24_results()
     def ts(h, w, m):
         d, se, p = tests[(h, w, m, "bal_acc")]
@@ -584,7 +593,7 @@ def tablews24() -> None:
              r"and four (L4) for WS-24, statistics of the nine TDA-90 windows (Section~\ref{sec:features-combined}), "
              r"alone and combined, with TDA-90 and TSFresh-774 + TDA-90 for reference. $\Delta$: differences between sets, "
              r"corrected standard errors in parentheses; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds. "
-             rf"Corrected standard errors of the means are at most {max(ses):.3f}. AUC: Table~\ref{{tab:hypotheses}}.}}",
+             rf"Corrected standard errors of the means are at most {max(ses):.3f}. All levels and AUC: Table~\ref{{tab:ws24-full}}.}}",
              r"\label{tab:ws24}", r"\begin{tabular}{l cc cc}", r"\toprule",
              r"& \multicolumn{2}{c}{Logistic regression} & \multicolumn{2}{c}{Gradient boosting} \\",
              r"\cmidrule(lr){2-3} \cmidrule(l){4-5}", r"Features & L1 & L4 & L1 & L4 \\", r"\midrule"]
@@ -600,6 +609,33 @@ def tablews24() -> None:
         if k_[3] == "bal_acc":
             print("   ", k_, tuple(round(x, 3) for x in v_))
 
+
+
+def tablews24full() -> None:
+    """Appendix C: every level and both measures of the windowed statistical control."""
+    means, tests = ws24_results()
+    lab = {"WS-24": "WS-24", "TDA-90": "TDA-90", "TSFresh-774+WS-24": "TSFresh-774 + WS-24",
+           "TSFresh-774+TDA-90": "TSFresh-774 + TDA-90", "TSFresh-774+WS-24+TDA-90": "TSFresh-774 + WS-24 + TDA-90"}
+    lines = [r"\begin{table}[t]", r"\centering", r"\scriptsize", r"\setlength{\tabcolsep}{3pt}",
+             r"\caption{Full version of Table~\ref{tab:ws24}. Mean of the eight detectors at each level, and the gain from "
+             r"adding TDA-90 to TSFresh-774 + WS-24 (H12) with the change of this gain from level~1 to level~4. Corrected standard "
+             r"errors in parentheses; $^{*}p<0.05$, $^{**}p<0.01$, Nadeau--Bengio test, 5 folds.}",
+             r"\label{tab:ws24-full}", r"\begin{adjustbox}{max width=\textwidth}", r"\begin{tabular}{ll ccccc}", r"\toprule",
+             r"Clf. & Features & L1 & L2 & L3 & L4 & L4 $-$ L1 \\", r"\midrule"]
+    for k, title in (("bal_acc", "Balanced accuracy"), ("auc", "ROC AUC")):
+        lines.append(r"\multicolumn{7}{l}{\emph{" + title + r"}} \\")
+        for m in ("lr", "hgb"):
+            for i, s_ in enumerate(WS_ORDER):
+                cells = [CLF[m] if i == 0 else "", lab[s_]] + [f"{means[(s_, m, k, l)][0]:.3f} ({fse(means[(s_, m, k, l)][1])})" for l in (1, 2, 3, 4)] + [""]
+                lines.append(" & ".join(cells) + r" \\")
+            d = [tests[("H12", f"L{l}", m, k)] for l in (1, 2, 3, 4)] + [tests[("H12", "L4-L1", m, k)]]
+            lines.append(" & ".join(["", r"$\Delta$ H12"] + [f"{fs(v)} ({fse(se)})" + star(p) for v, se, p in d]) + r" \\")
+            lines.append(r"\addlinespace")
+        if k == "bal_acc":
+            lines.append(r"\midrule")
+    lines += [r"\bottomrule", r"\end{tabular}", r"\end{adjustbox}", r"\end{table}"]
+    (TAB / "tableA7_ws24_full.tex").write_text("\n".join(lines) + "\n"); print("  -> paper/tables/tableA7_ws24_full.tex")
+
 # ------------------------------------------------------------------------ Table A2 ---
 def tableA2() -> None:
     ext = {"TDA-90": 0.0, "TSFresh-774": 0.0, "catch22": 0.0}
@@ -611,17 +647,22 @@ def tableA2() -> None:
             m = re.match(r"\s*(tda90|tsfresh|catch22)\s+(\d+) features \((\d+)s\)", line)
             if m:
                 ext[key[m.group(1)]] += float(m.group(3))
-    T = pd.concat([pd.read_csv(RES / "main" / "timing.csv"), pd.read_csv(RES / "complementarity" / "timing.csv")])
+    m_ = re.search(r"features done in (\d+)s", (RES / "ws24" / "log_features.txt").read_text())
+    ext["WS-24"] = float(m_.group(1))                 # one process, all six batches
+    T = pd.concat([pd.read_csv(RES / "main" / "timing.csv"), pd.read_csv(RES / "complementarity" / "timing.csv"),
+                   pd.read_csv(RES / "ws24" / "timing.csv")])
     fit = T.groupby(["set", "model"]).seconds.sum() / 60
     order = [("TDA-90", "lr"), ("TDA-90", "hgb"), ("TSFresh-774", "lr"), ("TSFresh-774", "hgb"), ("catch22", "lr"),
              ("catch22", "hgb"), ("MiniRocket", "ridge"), ("TSFresh-774+TDA-90", "lr"), ("TSFresh-774+TDA-90", "hgb"),
-             ("TSFresh-774+catch22", "lr"), ("TSFresh-774+catch22", "hgb")]
+             ("TSFresh-774+catch22", "lr"), ("TSFresh-774+catch22", "hgb"), ("WS-24", "lr"), ("WS-24", "hgb"),
+             ("TSFresh-774+WS-24", "lr"), ("TSFresh-774+WS-24", "hgb"), ("TSFresh-774+WS-24+TDA-90", "lr"),
+             ("TSFresh-774+WS-24+TDA-90", "hgb")]
     lines = [r"\begin{table}[t]", r"\centering", r"\footnotesize",
              r"\caption{Computational cost on 12 cores, 36\,000 series of length 500. Extraction: wall time "
              r"of feature extraction summed over the six generation batches. Detectors: wall time of fitting and "
              r"scoring the eight detectors in all five folds. MiniRocket's transform is fitted inside each fold "
              r"and counted under its detectors. Extraction is listed once per feature family; the combined sets reuse "
-             r"the extracted features.}",
+             r"the extracted features. WS-24 was extracted in a single process.}",
              r"\label{tab:cost}", r"\begin{tabular}{l l r r}", r"\toprule",
              r"Feature set & Classifier & Extraction (min) & Detectors (min) \\", r"\midrule"]
     for st, m in order:
@@ -981,7 +1022,125 @@ def fig23() -> None:
     save(fig, "fig3_levels_gain")
 
 
-JOBS = {"fig1": fig1, "fig23": fig23, "table7": table7, "table6": table6, "tableA6": tableA6, "table2c": table2c, "table3c": table3c, "table4c": table4c, "tableA1": tableA1, "tablews24": tablews24, "tableA2": tableA2, "fig5": fig5, "table5": table5, "table4": table4, "fig4": fig4, "table1": table1, "table2": table2, "table3": table3}
+
+def _sublevel_bars(z):
+    """H0 sublevel persistence of z on the path graph, elder rule; returns finite bars
+    (birth, death, index of the vertex whose edge ends the bar) and the essential birth."""
+    z = np.asarray(z, float); n = len(z); parent = list(range(n)); born = [None] * n
+    def find(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]; i = parent[i]
+        return i
+    bars = []
+    for t in np.argsort(z):
+        born[t] = t
+        for s in (t - 1, t + 1):
+            if 0 <= s < n and born[s] is not None:
+                a, b = find(t), find(s)
+                if a == b:
+                    continue
+                young, old = (a, b) if z[a] > z[b] else (b, a)      # elder rule: larger minimum ends
+                if z[young] < z[t]:
+                    bars.append((z[young], z[t], t))
+                parent[young] = old
+    return bars, z.min()
+
+
+def figprelim() -> None:
+    """Figure for Section 2.2 on deterministic toy data: sublevel filtration of a short series
+    with an upward outlier and a downward outlier at the global minimum, and the Vietoris-Rips
+    filtration of a delay-embedded window with its diagram and the diagram of the scaled cloud."""
+    from ripser import ripser
+    from scipy.sparse import coo_matrix
+    from scipy.spatial.distance import pdist, squareform
+    CU, CD, CK = "#D55E00", "#56B4E9", "#1A1A1A"
+    z = np.array([0.6, 0.2, 0.9, 0.4, 1.1, 0.7, 3.0, 0.5, 1.0, 0.3, 0.8, -2.5, 0.45, 1.2, 0.35])
+    tu, td = 6, 11
+    bars, ess = _sublevel_bars(z)
+    # cross-check against the lower-star filtration computed by Ripser
+    n = len(z); I = list(range(n)) + list(range(n - 1)); J = list(range(n)) + list(range(1, n))
+    V = list(z) + [max(z[i], z[i + 1]) for i in range(n - 1)]
+    dg = ripser(coo_matrix((V, (I, J)), shape=(n, n)), distance_matrix=True, maxdim=0)["dgms"][0]
+    fin = np.sort(dg[np.isfinite(dg[:, 1])], axis=0)
+    assert np.allclose(fin, np.sort(np.array([(b, d) for b, d, _ in bars]), axis=0))
+    up = [b for b in bars if b[2] == tu][0]
+    assert up[1] - up[0] >= z[tu] - max(z[tu - 1], z[tu + 1])
+    z2 = z.copy(); z2[td] -= 1.0                                    # lowering the global minimum
+    assert sorted((b, d) for b, d, _ in _sublevel_bars(z2)[0]) == sorted((b, d) for b, d, _ in bars)
+    r = 0.75
+    fig = plt.figure(figsize=(6.8, 4.5))
+    gs = fig.add_gridspec(2, 6, height_ratios=[1, 1], hspace=0.62, wspace=1.1)
+    # (a) series, threshold r, sublevel set
+    ax = fig.add_subplot(gs[0, :4]); t = np.arange(n)
+    ax.axhspan(z.min() - 0.6, r, color="0.93", lw=0)
+    ax.axhline(r, color="0.45", lw=0.7, ls="--"); ax.text(n - 0.6, r + 0.08, "$r$", color="0.35", fontsize=7, ha="right", va="bottom")
+    ax.plot(t, z, color="0.75", lw=0.8, zorder=1)
+    inn = z <= r
+    for i in range(n - 1):
+        if inn[i] and inn[i + 1]:
+            ax.plot([i, i + 1], [z[i], z[i + 1]], color=CK, lw=1.6, zorder=2)
+    ax.scatter(t[inn], z[inn], s=14, color=CK, zorder=3, label=r"in the sublevel set $z_t \leq r$")
+    ax.scatter(t[~inn], z[~inn], s=14, facecolor="white", edgecolor="0.55", lw=0.8, zorder=3, label="not yet entered")
+    ax.scatter([tu], [z[tu]], s=40, facecolor="none", edgecolor=CU, lw=1.4, zorder=4)
+    ax.scatter([td], [z[td]], s=40, facecolor="none", edgecolor=CD, lw=1.4, zorder=4)
+    ax.annotate("upward outlier", (tu, z[tu]), (tu + 0.6, z[tu] - 0.1), color=CU, fontsize=6.5, va="center")
+    ax.annotate("downward outlier\n(global minimum)", (td, z[td]), (td + 0.6, z[td] + 0.1), color=CD, fontsize=6.5, va="center")
+    ax.set_xlim(-0.6, n - 0.4); ax.set_ylim(z.min() - 0.5, z.max() + 0.4)
+    ax.set_xlabel("Time $t$"); ax.set_ylabel("Value $z_t$ = filtration value")
+    ax.legend(loc="upper left", fontsize=6.5, handletextpad=0.2, borderaxespad=0.1)
+    ax.set_title("a  Sublevel filtration of a series: components grow as $r$ rises", loc="left")
+    # (b) H0 barcode on the same vertical scale
+    bx = fig.add_subplot(gs[0, 4:], sharey=ax)
+    order = sorted(bars, key=lambda b: b[0])
+    for k, (b, d, tk) in enumerate(order):
+        bx.plot([k, k], [b, d], color=CU if tk == tu else CK, lw=2.2 if tk == tu else 1.4, solid_capstyle="butt")
+    k = len(order)
+    bx.annotate("", (k, z.max() + 0.3), (k, ess), arrowprops=dict(arrowstyle="->", color=CD, lw=1.4, ls="--"))
+    bx.text(k - 0.35, ess + 0.05, "essential,\nomitted", color=CD, fontsize=6.5, ha="right", va="bottom")
+    bx.set_xticks([]); bx.set_xlim(-0.8, k + 0.8); bx.set_xlabel("$H_0$ bars")
+    bx.tick_params(labelleft=False)
+    bx.set_title("b  The upward outlier ends a long bar", loc="left")
+    # (c, d) delay embedding and Rips complexes at two scales; (e) diagrams of X and 2X
+    s = np.arange(36); w = np.sin(2 * np.pi * s / 11.3) + 0.08 * np.cos(2 * np.pi * s * 0.37)
+    tau = 3; X = np.c_[w[:-tau], w[tau:]]
+    X = np.unique(np.round(X, 6), axis=0)
+    D = squareform(pdist(X))
+    dgX = ripser(X, maxdim=1)["dgms"]
+    h1 = dgX[1][np.argmax(dgX[1][:, 1] - dgX[1][:, 0])]
+    r1 = 0.9 * h1[0]; r2 = 0.5 * (h1[0] + h1[1])
+    for j, (rr, lab) in enumerate(((r1, f"c  Rips complex at scale {r1:.2f}"), (r2, f"d  At scale {r2:.2f}: a loop"))):
+        cx = fig.add_subplot(gs[1, 2 * j:2 * j + 2])
+        m = len(X)
+        for a_ in range(m):
+            for b_ in range(a_ + 1, m):
+                for c_ in range(b_ + 1, m):
+                    if max(D[a_, b_], D[a_, c_], D[b_, c_]) <= rr:
+                        cx.fill(X[[a_, b_, c_], 0], X[[a_, b_, c_], 1], color=COLOR["TDA-90"], alpha=0.04, lw=0)
+        for a_ in range(m):
+            for b_ in range(a_ + 1, m):
+                if D[a_, b_] <= rr:
+                    cx.plot(X[[a_, b_], 0], X[[a_, b_], 1], color=COLOR["TDA-90"], lw=0.6)
+        cx.scatter(X[:, 0], X[:, 1], s=7, color=CK, zorder=3)
+        cx.set_aspect("equal"); cx.set_xlabel("$z_t$"); cx.set_ylabel(f"$z_{{t+{tau}}}$")
+        cx.margins(0.08); cx.set_title(lab, loc="left")
+    ex = fig.add_subplot(gs[1, 4:])
+    f0 = dgX[0][np.isfinite(dgX[0][:, 1])]
+    top = max(dgX[1][:, 1].max(), f0[:, 1].max()) * 1.1
+    ex.plot([0, top], [0, top], color="0.6", lw=0.6)
+    ex.scatter(f0[:, 0], f0[:, 1], s=10, marker="o", color=CK, label="$H_0$", zorder=3)
+    ex.scatter(dgX[1][:, 0], dgX[1][:, 1], s=16, marker="^", color=COLOR["TDA-90"], label="$H_1$", zorder=3)
+    ex.set_xlim(-0.05 * top, top); ex.set_ylim(-0.05 * top, top); ex.set_aspect("equal")
+    ex.set_xlabel("Birth"); ex.set_ylabel("Death")
+    ex.legend(loc="lower right", fontsize=6.5, handletextpad=0.1, borderaxespad=0.1)
+    ex.set_title("e  Persistence diagram: one loop", loc="left")
+    life1 = np.sort(dgX[1][:, 1] - dgX[1][:, 0])[::-1]
+    print(f"  H1 lifetimes {life1.round(3)}")
+    print(f"  sublevel bars {[(round(b,2), round(d,2)) for b, d, _ in order]}, essential {ess}")
+    print(f"  Rips: {len(X)} points, H1 main bar {h1.round(3)}, scales {r1:.3f} {r2:.3f}")
+    save(fig, "fig_prelim")
+
+
+JOBS = {"figprelim": figprelim, "fig1": fig1, "fig23": fig23, "table7": table7, "table6": table6, "tableA6": tableA6, "table2c": table2c, "table3c": table3c, "table4c": table4c, "tableA1": tableA1, "tablews24": tablews24, "tablews24full": tablews24full, "tableA2": tableA2, "fig5": fig5, "table5": table5, "table4": table4, "fig4": fig4, "table1": table1, "table2": table2, "table3": table3}
 
 if __name__ == "__main__":
     style()

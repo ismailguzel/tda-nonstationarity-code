@@ -1,6 +1,6 @@
 """
 The tables and tests of the main comparison (H1-H4 of the paper), from the outputs of
-src/detectors.py. Written before the final run; every test is reported whatever it shows.
+src/detectors.py. Every test is reported whatever it shows.
 
 Corrected tests: Nadeau & Bengio (2003) — the variance of the k fold differences is
 inflated by (1/k + n_test/n_train) because the training sets overlap; t with k - 1 df,

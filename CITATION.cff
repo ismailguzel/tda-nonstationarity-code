@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or its results, please cite it as below."
-title: "Diagnosing the causes of non-stationarity with topological feature engineering: code and results"
+title: "Detecting co-occurring causes of non-stationarity with statistical and topological features (code and results)"
 authors:
   - family-names: "Güzel"
     given-names: "İsmail"
@@ -8,12 +8,12 @@ authors:
   - family-names: "Yozgatlıgil"
     given-names: "Ceylan"
     orcid: "https://orcid.org/0000-0003-3492-0510"
-version: "1.1"
+version: "1.2"
 license: MIT
 repository-code: "https://github.com/ismailguzel/tda-nonstationarity-code"
 keywords:
+  - multi-label classification
   - non-stationarity
   - persistent homology
-  - topological data analysis
-  - time series classification
-  - feature engineering
+  - structural breaks
+  - time series features

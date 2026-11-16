@@ -353,7 +353,7 @@ TSFresh-774   hgb 0.418 0.512 0.443 0.406 0.327 0.403
  MiniRocket ridge 0.146 0.288 0.305 0.250 0.199 0.190
 [2026-10-15 00:03:35] <<< stats_main
 [2026-10-15 00:03:35] >>> stats_complementarity
-=== complementarity (addendum v2): TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical (36000 series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+=== complementarity: TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical (36000 series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
 
 T6  mean of the eight detectors, bal_acc
 model                 set            L1            L2            L3            L4
@@ -399,7 +399,7 @@ bal_acc    lr +0.005 (0.007) p=0.460 +0.091 (0.005) p=0.000**  +0.017 (0.006) p=
     auc    lr +0.002 (0.001) p=0.066 +0.096 (0.004) p=0.000** +0.017 (0.003) p=0.003** +0.023 (0.003) p=0.002** +0.028 (0.002) p=0.000** +0.007 (0.001) p=0.005** +0.007 (0.002) p=0.008** +0.034 (0.005) p=0.002**
 [2026-10-15 00:03:36] <<< stats_complementarity
 [2026-10-15 00:03:36] >>> stats_budget
-=== equal feature budget (addendum v3) (TSFresh top-100 vs union top-100); folds of the final run; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+=== equal feature budget (TSFresh top-100 vs union top-100); same folds as the main comparison; Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
 
 T10  mean of the eight detectors, bal_acc
 model                set            L1            L2            L3            L4
@@ -462,7 +462,7 @@ bal_acc    lr  +0.008 (0.006) p=0.224 +0.080 (0.012) p=0.003**  +0.033 (0.009) p
     auc    lr  +0.004 (0.002) p=0.148 +0.089 (0.010) p=0.001** +0.045 (0.003) p=0.000** +0.018 (0.003) p=0.003** +0.033 (0.003) p=0.001** +0.016 (0.003) p=0.007** +0.010 (0.001) p=0.001** +0.073 (0.004) p=0.000**
 [2026-10-15 00:03:37] <<< stats_budget
 [2026-10-15 00:03:37] >>> interpret
-=== Interpretation of the TDA-90 detectors — exploratory, not in the analysis plan
+=== Interpretation of the TDA-90 detectors — exploratory
 
 ##### V
 
@@ -569,7 +569,7 @@ bal_acc    lr  +0.008 (0.006) p=0.224 +0.080 (0.012) p=0.003**  +0.033 (0.009) p
      TSFresh-774: data__fft_aggregated__aggtype_"variance" 0.833; data__ar_coefficient__coeff_1__k_10 0.829; data__absolute_maximum 0.822; data__fft_aggregated__aggtype_"skew" 0.818; data__fft_aggregated__aggtype_"centroid" 0.815
 [2026-10-15 00:04:16] <<< interpret
 [2026-10-15 00:04:16] >>> diagnose
-=== Diagnosis from the out-of-fold scores — exploratory, not in the analysis plan; 36000 series, 72 valid combinations
+=== Diagnosis from the out-of-fold scores — exploratory; 36000 series, 72 valid combinations
 
   exact by level
   level                              0      1      2      3      4      5

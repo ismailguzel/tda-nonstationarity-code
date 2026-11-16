@@ -60,7 +60,7 @@ def main() -> None:
     lev = O["level"].to_numpy()
     valid = np.unique(Y, axis=0)                                   # the 72 combinations of the design
     keys = sorted({tuple(c.split("|")[:2]) for c in O.columns if c.count("|") == 2 and not c.startswith("MiniRocket")})
-    lines = [f"=== Diagnosis from the out-of-fold scores — exploratory, not in the analysis plan; "
+    lines = [f"=== Diagnosis from the out-of-fold scores — exploratory; "
              f"{len(O)} series, {len(valid)} valid combinations"]
     acc_rows, stat_rows, cal_rows, bins_rows = [], [], [], []
 

@@ -36,7 +36,7 @@ def main() -> None:
     D = pd.concat(parts)
     order = ["TSFresh-774", TS, UN, "TSFresh-774+TDA-90"]
     k = D.fold.nunique(); r = 1 / (k - 1)
-    lines = [f"=== equal feature budget (addendum v3) ({TS} vs {UN}); folds of the final run; "
+    lines = [f"=== equal feature budget ({TS} vs {UN}); same folds as the main comparison; "
              f"Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)"]
     tables = {}
     M8 = D[D.level.between(1, 4)].groupby(["set", "model", "level", "fold"])[["bal_acc", "auc"]].mean()

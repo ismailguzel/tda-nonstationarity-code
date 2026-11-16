@@ -1,0 +1,112 @@
+=== cross-generator check (GutenTAG); 1000 series of 500; detectors fitted on 36000 BeTiSe series
+    decision: probability > 0.5 (tests: 5 %); rates with Wilson 95% intervals
+
+X1  Arm A (GutenTAG, defined labels): 760 series; R on LT base only
+  S  positives 240, negatives 520
+    TSFresh-774+TDA-90|hgb     sensitivity 231/240 = 0.963 [0.930, 0.980]   specificity 511/520 = 0.983 [0.967, 0.991]   BA 0.973
+    TSFresh-774+TDA-90|lr      sensitivity 237/240 = 0.988 [0.964, 0.996]   specificity 508/520 = 0.977 [0.960, 0.987]   BA 0.982
+    TSFresh-774|hgb            sensitivity 232/240 = 0.967 [0.936, 0.983]   specificity 513/520 = 0.987 [0.972, 0.993]   BA 0.977
+    TSFresh-774|lr             sensitivity 233/240 = 0.971 [0.941, 0.986]   specificity 505/520 = 0.971 [0.953, 0.982]   BA 0.971
+    test                       sensitivity 231/240 = 0.963 [0.930, 0.980]   specificity 201/520 = 0.387 [0.346, 0.429]   BA 0.675
+  V  positives 0, negatives 760
+    TSFresh-774+TDA-90|hgb     sensitivity   0/  0   specificity 637/760 = 0.838 [0.810, 0.863]   BA nan
+    TSFresh-774+TDA-90|lr      sensitivity   0/  0   specificity 648/760 = 0.853 [0.826, 0.876]   BA nan
+    TSFresh-774|hgb            sensitivity   0/  0   specificity 602/760 = 0.792 [0.762, 0.819]   BA nan
+    TSFresh-774|lr             sensitivity   0/  0   specificity 528/760 = 0.695 [0.661, 0.726]   BA nan
+    test                       sensitivity   0/  0   specificity 476/760 = 0.626 [0.591, 0.660]   BA nan
+  T  positives 240, negatives 520
+    TSFresh-774+TDA-90|hgb     sensitivity 239/240 = 0.996 [0.977, 0.999]   specificity 407/520 = 0.783 [0.745, 0.816]   BA 0.889
+    TSFresh-774+TDA-90|lr      sensitivity 239/240 = 0.996 [0.977, 0.999]   specificity 408/520 = 0.785 [0.747, 0.818]   BA 0.890
+    TSFresh-774|hgb            sensitivity 239/240 = 0.996 [0.977, 0.999]   specificity 416/520 = 0.800 [0.763, 0.832]   BA 0.898
+    TSFresh-774|lr             sensitivity 239/240 = 0.996 [0.977, 0.999]   specificity 398/520 = 0.765 [0.727, 0.800]   BA 0.881
+    test                       sensitivity 235/240 = 0.979 [0.952, 0.991]   specificity 228/520 = 0.438 [0.396, 0.481]   BA 0.709
+  R  positives 40, negatives 240
+    TSFresh-774+TDA-90|hgb     sensitivity  40/ 40 = 1.000 [0.912, 1.000]   specificity 240/240 = 1.000 [0.984, 1.000]   BA 1.000
+    TSFresh-774+TDA-90|lr      sensitivity  40/ 40 = 1.000 [0.912, 1.000]   specificity 240/240 = 1.000 [0.984, 1.000]   BA 1.000
+    TSFresh-774|hgb            sensitivity  40/ 40 = 1.000 [0.912, 1.000]   specificity 240/240 = 1.000 [0.984, 1.000]   BA 1.000
+    TSFresh-774|lr             sensitivity  40/ 40 = 1.000 [0.912, 1.000]   specificity 240/240 = 1.000 [0.984, 1.000]   BA 1.000
+  M  positives 120, negatives 640
+    TSFresh-774+TDA-90|hgb     sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 605/640 = 0.945 [0.925, 0.960]   BA 0.973
+    TSFresh-774+TDA-90|lr      sensitivity 118/120 = 0.983 [0.941, 0.995]   specificity 580/640 = 0.906 [0.881, 0.926]   BA 0.945
+    TSFresh-774|hgb            sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 611/640 = 0.955 [0.936, 0.968]   BA 0.977
+    TSFresh-774|lr             sensitivity 114/120 = 0.950 [0.895, 0.977]   specificity 579/640 = 0.905 [0.879, 0.925]   BA 0.927
+    test                       sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 163/640 = 0.255 [0.222, 0.290]   BA 0.627
+  Q  positives 120, negatives 640
+    TSFresh-774+TDA-90|hgb     sensitivity  86/120 = 0.717 [0.630, 0.790]   specificity 640/640 = 1.000 [0.994, 1.000]   BA 0.858
+    TSFresh-774+TDA-90|lr      sensitivity  94/120 = 0.783 [0.701, 0.848]   specificity 640/640 = 1.000 [0.994, 1.000]   BA 0.892
+    TSFresh-774|hgb            sensitivity  68/120 = 0.567 [0.477, 0.652]   specificity 640/640 = 1.000 [0.994, 1.000]   BA 0.783
+    TSFresh-774|lr             sensitivity  76/120 = 0.633 [0.544, 0.714]   specificity 640/640 = 1.000 [0.994, 1.000]   BA 0.817
+    test                       sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 624/640 = 0.975 [0.960, 0.985]   BA 0.988
+  P  positives 120, negatives 640
+    TSFresh-774+TDA-90|hgb     sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 570/640 = 0.891 [0.864, 0.913]   BA 0.945
+    TSFresh-774+TDA-90|lr      sensitivity 119/120 = 0.992 [0.954, 0.999]   specificity 547/640 = 0.855 [0.825, 0.880]   BA 0.923
+    TSFresh-774|hgb            sensitivity 119/120 = 0.992 [0.954, 0.999]   specificity 552/640 = 0.863 [0.834, 0.887]   BA 0.927
+    TSFresh-774|lr             sensitivity 114/120 = 0.950 [0.895, 0.977]   specificity 531/640 = 0.830 [0.799, 0.857]   BA 0.890
+    test                       sensitivity 120/120 = 1.000 [0.969, 1.000]   specificity 309/640 = 0.483 [0.444, 0.522]   BA 0.741
+  C  positives 240, negatives 520
+    TSFresh-774+TDA-90|hgb     sensitivity 224/240 = 0.933 [0.894, 0.959]   specificity 416/520 = 0.800 [0.763, 0.832]   BA 0.867
+    TSFresh-774+TDA-90|lr      sensitivity 211/240 = 0.879 [0.832, 0.915]   specificity 394/520 = 0.758 [0.719, 0.793]   BA 0.818
+    TSFresh-774|hgb            sensitivity 225/240 = 0.938 [0.899, 0.962]   specificity 399/520 = 0.767 [0.729, 0.802]   BA 0.852
+    TSFresh-774|lr             sensitivity 205/240 = 0.854 [0.804, 0.893]   specificity 359/520 = 0.690 [0.649, 0.729]   BA 0.772
+
+X2  Arm A: share flagged by each detector, per base and injection (TSFresh-774+TDA-90 | hgb; test row below each)
+    cell             n       S      V      T      R      M      Q      P      C
+    WN none           40  0.00   0.05   0.00   0.00   0.00   0.00   0.55   0.00
+      test                0.00   0.07   0.03      -   0.03   0.05   0.10      -
+    WN M              40  0.00   0.03   0.00   0.00   1.00   0.00   0.05   0.05
+      test                1.00   0.60   1.00      -   1.00   0.00   0.62      -
+    WN Q              40  0.00   0.00   0.00   0.00   0.00   1.00   0.50   0.03
+      test                0.00   1.00   0.05      -   0.20   1.00   0.80      -
+    WN P              40  0.00   0.82   0.00   0.00   0.00   0.00   1.00   0.00
+      test                0.00   0.05   0.10      -   0.07   0.00   1.00      -
+    WN C              40  0.00   0.05   0.00   0.00   0.00   0.00   0.00   0.97
+      test                0.03   0.23   0.07      -   0.38   0.07   0.07      -
+    WN Cplat          40  0.00   0.15   0.00   0.00   0.03   0.00   0.07   0.90
+      test                0.00   0.07   0.10      -   0.28   0.07   0.07      -
+    RW none           40  1.00   0.07   0.38   0.90   0.00   0.00   0.00   0.65
+      test                0.95   0.00   0.90      -   1.00   0.05   0.05      -
+    RW M              40  1.00   0.10   0.90   0.05   1.00   0.00   0.03   0.70
+      test                0.97   0.00   0.95      -   1.00   0.00   1.00      -
+    RW Q              40  0.78   0.42   0.23   0.33   0.00   0.38   0.17   0.55
+      test                0.90   1.00   0.90      -   1.00   1.00   0.45      -
+    RW P              40  1.00   0.35   0.33   0.57   0.07   0.00   1.00   0.00
+      test                1.00   0.72   0.88      -   0.97   0.00   1.00      -
+    RW C              40  1.00   0.42   0.45   0.60   0.28   0.00   0.00   0.93
+      test                0.97   0.07   0.85      -   1.00   0.03   0.93      -
+    RW Cplat          40  1.00   0.28   0.55   0.65   0.33   0.00   0.05   0.85
+      test                0.97   0.07   0.82      -   1.00   0.00   0.90      -
+    LT none           40  0.00   0.07   1.00   0.00   0.00   0.00   0.00   0.00
+      test                1.00   0.00   1.00      -   1.00   0.03   0.03      -
+    LT M              40  0.03   0.00   1.00   0.00   1.00   0.00   0.03   0.23
+      test                1.00   0.72   0.88      -   1.00   0.00   1.00      -
+    LT Q              40  0.00   0.05   0.97   0.00   0.00   0.78   0.25   0.03
+      test                0.95   1.00   1.00      -   1.00   1.00   0.72      -
+    LT P              40  0.00   0.05   1.00   0.00   0.00   0.00   1.00   0.00
+      test                1.00   0.03   1.00      -   1.00   0.00   1.00      -
+    LT C              40  0.10   0.05   1.00   0.00   0.05   0.00   0.00   0.97
+      test                1.00   0.70   1.00      -   1.00   0.03   0.75      -
+    LT Cplat          40  0.10   0.05   1.00   0.00   0.12   0.00   0.05   0.97
+      test                1.00   0.68   1.00      -   1.00   0.00   0.70      -
+    LT R              40  0.00   0.05   0.00   1.00   0.00   0.00   0.00   0.38
+      test                1.00   0.07   0.65      -   1.00   0.07   0.07      -
+
+X3  Arm A: balanced accuracy, TSFresh-774+TDA-90 minus TSFresh-774 (descriptive, no test)
+  hgb: S -0.004  V   n/a  T -0.009  R +0.000  M -0.005  Q +0.075  P +0.018  C +0.014
+  lr: S +0.011  V   n/a  T +0.010  R +0.000  M +0.017  Q +0.075  P +0.033  C +0.046
+
+X5  Arm C (GutenTAG bases outside the generator's scope): share flagged (TSFresh-774+TDA-90 | hgb)
+    cell                           n       S      V      T      R      M      Q      P      C
+    sine none                       20  0.00   1.00   0.00   0.00   0.00   0.00   0.00   0.00
+    sine M                          20  0.00   1.00   0.00   0.00   0.95   0.00   0.00   0.80
+    sine P                          20  0.00   1.00   0.00   0.00   0.00   0.00   0.70   0.00
+    sine C                          20  0.00   0.95   0.00   0.00   0.15   0.00   0.00   1.00
+    ecg none                        20  0.00   1.00   0.00   0.00   0.00   0.00   0.00   0.00
+    ecg M                           20  0.00   0.60   0.55   0.00   0.95   0.05   0.00   0.10
+    ecg P                           20  0.00   1.00   0.00   0.00   0.00   0.00   0.95   0.00
+    ecg C                           20  0.00   0.85   0.00   0.00   0.00   0.55   0.10   0.75
+    cylinder-bell-funnel none       20  0.10   0.95   0.05   0.00   0.00   0.10   0.90   0.45
+    cylinder-bell-funnel M          20  0.75   1.00   0.05   0.00   0.90   0.00   0.10   0.95
+    cylinder-bell-funnel P          20  0.15   1.00   0.00   0.00   0.00   0.05   1.00   0.05
+    cylinder-bell-funnel C          20  0.20   1.00   0.00   0.00   0.00   0.25   0.60   0.85
+
+total time 0s

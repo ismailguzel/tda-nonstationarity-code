@@ -1,4 +1,4 @@
-"""Exploratory (Section 5.4 of the paper): classical statistical tests
+"""Exploratory comparison with classical tests in the paper: classical statistical tests
 used as detectors of the eight causes, scored exactly like the learned detectors.
 
 One standard test per cause, default specification, decision at the 5% level, applied to the

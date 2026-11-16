@@ -1,0 +1,3 @@
+sup-LM trend-shift test, 5% critical value 5.679; arm A, linear-trend base (280 series)
+sensitivity 40/40  specificity 136/240  BA 0.783
+share flagged by injection: {'C': 0.72, 'Cplat': 0.78, 'M': 1.0, 'P': 0.02, 'Q': 0.0, 'R': 1.0, 'none': 0.08}

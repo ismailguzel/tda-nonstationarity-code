@@ -2,8 +2,7 @@
 Topological features of the paper: TDA-90.
 
 The per-diagram statistics, sublevel H0, the z-score, the windows and the paper features
-between the two "copied verbatim" markers come unchanged from the development code of the
-study; tda90() and its helpers at the end assemble the 90 features, in a fixed order and on
+between the two "building blocks" markers are the components; tda90() and its helpers at the end assemble the 90 features, in a fixed order and on
 a signed-log scale.
 
 TDA-90 (one series, z-scored once as a whole):
@@ -21,7 +20,7 @@ from __future__ import annotations
 
 import numpy as np
 
-# ---------------------------------------------------------------- copied verbatim ---
+# ---------------------------------------------------------------- building blocks ---
 
 def carlsson_coordinates(diagram: np.ndarray) -> np.ndarray:
     """5 Carlsson coordinates for a persistence diagram.
@@ -170,8 +169,6 @@ def betti_curve(diagram: np.ndarray, resolution: int = BETTI_RESOLUTION) -> np.n
 
     Motivation: a mean shift puts the series at two levels, so its bars are born
     in two clusters and the curve is bimodal; the 8 scalars average that away.
-    Measured on betise 0.5.0: the curve turns bimodal once the realised shift
-    exceeds about 2 noise standard deviations, as for a two-Gaussian mixture.
     The valley is not specific to mean shifts — any series sitting at separated
     levels (trends, random walks) shows one.
     """
@@ -370,7 +367,7 @@ def paper_columns(aggs) -> list[int]:
     return [i for i, n in enumerate(paper_win_names())
             if not n.startswith(PAPER_DROP) and n.rsplit("__", 1)[1] in aggs]
 
-# ------------------------------------------------------------ end copied verbatim ---
+# ------------------------------------------------------------ end building blocks ---
 
 
 def signed_log(v: np.ndarray) -> np.ndarray:

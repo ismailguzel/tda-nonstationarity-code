@@ -10,7 +10,7 @@ anomaly per series, plus the stationary class — 72 classes.
     P point anomaly      C collective anomaly
 
 betise 0.6.0 also lists combinations with two breaks (M+Q, M+R, Q+R) or two anomalies
-(P+C) in one series — 126 in all; 0.5.0 did not allow them. They are left out, so the
+(P+C) in one series — 126 in all. They are left out, so the
 dataset keeps the 72-class design (at most one break and one anomaly per series). Seasonality, contextual anomalies and long memory are out of
 scope.
 

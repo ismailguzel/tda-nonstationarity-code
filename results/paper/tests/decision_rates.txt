@@ -1,4 +1,4 @@
-Exploratory (outside the analysis plan). Classical tests as detectors, 5% level, all 36,000
+Exploratory. Classical tests as detectors, 5% level, all 36,000
 series (experiments/exploratory/stat_tests.py, run on munchlab1 2026-10-16, 116 s).
 TPR = share flagged among series with the cause; FPR = share flagged among series without it.
 

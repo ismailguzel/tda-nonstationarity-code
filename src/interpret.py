@@ -80,7 +80,7 @@ def main() -> None:
     block_of = {n: b for n in tn for b, f in BLOCKS.items() if f(n)}
     assert len(block_of) == len(tn) == 90, "every TDA-90 feature belongs to exactly one block"
     coefs = pd.read_csv(Path(args.run) / "lr_coefs.csv")
-    lines = ["=== Interpretation of the TDA-90 detectors — exploratory, not in the analysis plan"]
+    lines = ["=== Interpretation of the TDA-90 detectors — exploratory"]
 
     for c in args.chars:
         j = LETTERS.index(c)

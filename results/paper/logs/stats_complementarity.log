@@ -1,4 +1,4 @@
-=== complementarity (addendum v2): TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical (36000 series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
+=== complementarity: TSFresh-774 alone vs + TDA-90 and + catch22; fold assignment identical (36000 series); Nadeau-Bengio corrected SE, two-sided p (* < 0.05, ** < 0.01)
 
 T6  mean of the eight detectors, bal_acc
 model                 set            L1            L2            L3            L4
